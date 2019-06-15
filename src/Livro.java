@@ -8,11 +8,18 @@ public class Livro {
 	private String material;
 	private double preco;
 	private Date dataPub;
+	private ArrayList<Autor> autores;
+	private Categoria categoria;
+	private Editora editora;
+	
+	//Dados de Conhecimento do Gerente do Sistema
 	private double precoCusto;
 	private double margemLucro;
 	private int estoque = 0;
-	private ArrayList<Autor> autores;
-	public Livro(String isbn, String titulo, String resumo, String material, Date dataPub, double preco, double precoCusto) {
+	//Fim dos Dados de Conhecimento do GErente do Sistema
+	
+	public Livro(String isbn, String titulo, String resumo, String material, Date dataPub, double preco, double precoCusto, 
+				Categoria cat, Editora editora) {
 		
 		this.isbn = isbn;
 		this.titulo = titulo;
@@ -20,9 +27,12 @@ public class Livro {
 		this.material = material;
 		this.preco = preco;
 		this.dataPub = dataPub;
+		this.categoria = cat;
+		this.autores = new ArrayList<Autor>();
+		this.editora = editora;
+		
 		this.precoCusto = precoCusto;
 		this.margemLucro = this.preco - this.precoCusto;
-		this.autores = new ArrayList<Autor>();
 	}
 	
 	public void setIsbn(String isbn) {
@@ -87,6 +97,22 @@ public class Livro {
 		return this.margemLucro;
 	}
 	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
+	public Categoria getCategoria(Categoria categoria) {
+		return this.categoria;
+	}
+	
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+	
+	public Editora getEditora() {
+		return this.editora;
+	}
+	
 	public int getEstoque() {
 		return this.estoque;
 	}
@@ -99,30 +125,33 @@ public class Livro {
 		this.estoque += quant;
 	}
 	
-	public void addAutor(Autor a) {
+	public void addAutorLivro(Autor a) {
 		this.autores.add(a);
 	}
 	
-	public boolean rmvAutor(String nome) {
-		int index = 0;
-		boolean found = false;
-		
+	public boolean rmvAutorLivro(String nome) {
 		for(Autor a: autores) {
-			index++;
 			if(a.getnomeAutor().equals(nome)) {
 				System.out.println("Removendo " + a.getnomeAutor() + " da lista de autores desse livro.");
-				found = true;
-				break;
+				autores.remove(a);
+				return true;
 			}
 		}
-		if(found == true) {
-			autores.remove(index);
-			return true;
-		}else {
-			System.out.println("Autor não encontrado.");
-			return false;	
+		System.out.println("Não foi possível encontrar o autor " + nome + ".");
+		return false;
+	}
+	
+	public void showAutores() {
+		for(Autor a: autores) {
+			a.showAutor();
 		}
-		
+	}
+	
+	public void showLivro() {
+		System.out.println("Titulo: " + this.titulo);
+		System.out.println("ISBN: " + this.isbn);
+		System.out.println("Material: " + this.material);
+		System.out.println("Preco: " + this.preco);
 	}
 	
 }
