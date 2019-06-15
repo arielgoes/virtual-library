@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Cliente {
 	private String nome;
@@ -7,6 +8,8 @@ public class Cliente {
 	private String email;
 	private String username;
 	private String password;
+	private ArrayList<Endereco> enderecos;
+	private int countEnderecos;
 	
 	
 	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone) {
@@ -15,8 +18,11 @@ public class Cliente {
 		this.cpf = cpf;
 		this.email = email;
 		this.numeroTelefone = numeroTelefone;
+		this.countEnderecos = 0;
 	}
 	
+	
+	//sets
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -45,6 +51,8 @@ public class Cliente {
 		this.password = password;
 	}
 	
+	
+	//gets
 	public String getNome() {
 		return this.nome;
 	}
@@ -71,6 +79,38 @@ public class Cliente {
 	
 	public String getPassword() {
 		return this.password;
+	}
+	
+	//funcoes
+	public void addEndereco(Endereco endereco) {
+		enderecos.add(endereco);
+		++this.countEnderecos;
+	}
+	
+	void updateEnderecoID() {
+		for(int i = countEnderecos - 1; i >= 0; i--) {
+			if(enderecos.get(i).getEnderecoID() != i) {
+				enderecos.get(i).setEnderecoID(i);
+			}
+		}
+	}
+	
+	boolean delEnderecoCliente(int enderecoID) {
+		
+		if(enderecoID >= this.countEnderecos) {
+			System.out.println("ERRO: Digite um ID de endereco válido!");
+			return false;
+		}
+		for(Endereco e: enderecos) {
+			if(e.getEnderecoID() == enderecoID) {
+				System.out.println("O endereço com ID: " + enderecoID + "foi excluído!");
+				enderecos.remove(e);
+				return true;
+			}
+		}
+		
+		System.out.println("O endereço não foi encontrado e não pode ser removido!");
+		return false;
 	}
 	
 }

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 public class Endereco {
+	private int enderecoID; //comeca em 0 sempre
 	private String rua;
 	private String numero;
 	private String complemento;
@@ -12,10 +13,11 @@ public class Endereco {
 	private int countPedidos;
 	private Cliente cliente;
 	
-	public Endereco(Cliente cliente, String rua, String numero, String complemento, String bairro, 
+	public Endereco(Cliente cliente, int enderecoID, String rua, String numero, String complemento, String bairro, 
 			String cidade, String cep, String estado, String pais) {
 		
 		this.cliente = cliente;
+		this.enderecoID = enderecoID;
 		this.rua = rua;
 		this.numero = numero;
 		this.complemento = complemento;
@@ -31,6 +33,10 @@ public class Endereco {
 	//sets
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public void setEnderecoID(int enderecoID) {
+		this.enderecoID = enderecoID;
 	}
 	
 	public void setRua(String rua) {
@@ -75,6 +81,10 @@ public class Endereco {
 		return false;
 	}
 	
+	public int getEnderecoID() {
+		return this.enderecoID;
+	}
+	
 	public String getRua() {
 		return this.rua;
 	}
@@ -103,8 +113,12 @@ public class Endereco {
 		return this.estado;
 	}
 	
-	public String getpais() {
+	public String getPais() {
 		return this.pais;
+	}
+	
+	public Endereco getEndereco() {
+		return this.getEndereco();
 	}
 	
 	public boolean getPedido(String numeroPedido) {
