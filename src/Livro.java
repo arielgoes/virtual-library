@@ -11,6 +11,7 @@ public class Livro {
 	private ArrayList<Autor> autores;
 	private Categoria categoria;
 	private Editora editora;
+
 	
 	//Dados de Conhecimento do Gerente do Sistema
 	private double precoCusto;
@@ -35,6 +36,8 @@ public class Livro {
 		this.margemLucro = this.preco - this.precoCusto;
 	}
 	
+	
+	//sets
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
@@ -65,6 +68,16 @@ public class Livro {
 		this.margemLucro = this.preco - this.precoCusto;
 	}
 	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
+	public void setEditora(Editora editora) {
+		this.editora = editora;
+	}
+	
+	
+	//gets
 	public String getIsbn() {
 		return this.isbn;
 	}
@@ -97,17 +110,11 @@ public class Livro {
 		return this.margemLucro;
 	}
 	
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
 	
 	public Categoria getCategoria(Categoria categoria) {
 		return this.categoria;
 	}
 	
-	public void setEditora(Editora editora) {
-		this.editora = editora;
-	}
 	
 	public Editora getEditora() {
 		return this.editora;
@@ -154,4 +161,8 @@ public class Livro {
 		System.out.println("Preco: " + this.preco);
 	}
 	
+	
+	int printCategoriaInteger() {
+		return this.categoria.categoria;
+	}
 }
