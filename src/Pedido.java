@@ -11,12 +11,14 @@ public class Pedido {
 	private ArrayList<Livro> livros;
 	
 	
-	Pedido(String numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor){
+	Pedido(String numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor, Status status, Cliente cliente){
 		this.numeroPedido = numeroPedido;
 		this.enderecoEntrega = enderecoEntrega;
 		this.dataPedido = dataPedido;
 		this.valor = valor;
 		this.livros = new ArrayList<Livro>();
+		this.status = status;
+		this.cliente = cliente;
 	}
 	
 	
