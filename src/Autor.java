@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Autor {
 	private String nomeAutor;
@@ -7,6 +8,7 @@ public class Autor {
 	private String localNascimento;
 	private String localMorte;
 	private String bibliografia;
+	private ArrayList<Livro> livros;
 	
 	public Autor(String nome, Date dataNascimento, String localNascimento, String bibliografia){
 		this.nomeAutor = nome;
@@ -15,6 +17,8 @@ public class Autor {
 		this.bibliografia = bibliografia;
 	}
 	
+	
+	//sets
 	public void setNomeAutor(String nomeAutor) {
 		this.nomeAutor = nomeAutor;
 	}
@@ -35,6 +39,12 @@ public class Autor {
 		this.setLocalMorte(localMorte);
 	}
 	
+	public void setLivroAutor(Livro livro) {
+		livros.add(livro);
+	}
+	
+	
+	//gets
 	public String getnomeAutor() {
 		return this.nomeAutor;
 	}
@@ -59,9 +69,26 @@ public class Autor {
 		return this.bibliografia;
 	}
 	
+	public boolean getLivroAutor(String titulo) {
+		for(Livro l: livros) {
+			if(l.getTitulo().equals(titulo)) {
+				System.out.println("O livro " + titulo + "foi encontrado!");
+				
+				return true;
+			}
+		}
+		
+		System.out.println("O livro não foi encontrado!");
+		return false;
+	}
+	
+	
+	//funcoes
 	public void showAutor() {
 		System.out.println("Nome: " + this.nomeAutor + ".");
 		System.out.println("Data Nascimento: " + this.dataNascimento.toString() + ".");
 		System.out.println("Local Nascimento: " + this.localNascimento + ".");
 	}
+		
+
 }
