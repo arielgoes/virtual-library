@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class main {
+public class LivrariaVirtual {
 	
 	
 	
@@ -18,8 +18,6 @@ public class main {
 		pedido.setStatus(Status.PEDIDO_PAGO);
 		
 		System.out.println("Status: " + pedido.getStatus() + " Valor do status: " + pedido.printStatusInteger());
-		
-		
 		
 	}
 	
