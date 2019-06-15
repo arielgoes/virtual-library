@@ -10,10 +10,12 @@ public class Endereco {
 	private String pais;
 	private ArrayList<Pedido> pedidos;
 	private int countPedidos;
+	private Cliente cliente;
 	
-	public Endereco(String rua, String numero, String complemento, String bairro, 
+	public Endereco(Cliente cliente, String rua, String numero, String complemento, String bairro, 
 			String cidade, String cep, String estado, String pais) {
 		
+		this.cliente = cliente;
 		this.rua = rua;
 		this.numero = numero;
 		this.complemento = complemento;
@@ -27,6 +29,10 @@ public class Endereco {
 	
 	
 	//sets
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
@@ -61,6 +67,14 @@ public class Endereco {
 	
 	
 	//gets
+	public boolean getCliente(Cliente cliente) {
+		if(cliente.equals(this.cliente)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public String getRua() {
 		return this.rua;
 	}
