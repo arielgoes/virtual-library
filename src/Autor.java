@@ -58,4 +58,10 @@ public class Autor {
 	public String getBibliografia() {
 		return this.bibliografia;
 	}
+	
+	public void showAutor() {
+		System.out.println("Nome: " + this.nomeAutor + ".");
+		System.out.println("Data Nascimento: " + this.dataNascimento.toString() + ".");
+		System.out.println("Local Nascimento: " + this.localNascimento + ".");
+	}
 }
