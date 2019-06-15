@@ -1,16 +1,43 @@
 
-public class Categoria {
-	private String nome;
+public enum Categoria {
+	ADMINISTRACAO(0),
+	AGROPECUARIA(1),
+	ARTES(2),
+	AUDIOLIVRO(3),
+	AUTOAJUDA(4),
+	CIENCIAS_BIOLOGICAS(5),
+	CIENCIAS_EXATAS(6),
+	CIENCIAS_HUMANAS_E_SOCIAIS(7),
+	CONTABILIDADE(8),
+	CURSOS_E_IDIOMAS(9),
+	DICIONARIOS_E_MANUAIS_CONVERSACAO(10),
+	DIDATICOS(11),
+	DIREITO(12),
+	ECONOMIA(13),
+	ENGENHARIA_E_TECNOLOGIA(14),
+	ESOTERISMO(15),
+	ESPIRITISMO(16),
+	ESPORTES_E_LAZER(17),
+	GASTRONOMIA(18),
+	GEOGRAFIA_E_HISTORIA(19),
+	HQS(20),
+	INFORMATICA(21),
+	LINGUISTICA(22),
+	LITERATURA_ESTRANGEIRA(23),
+	LITERATURA_INFANTOJUVENIL(24),
+	LITERATURA_NACIONAL(25),
+	MEDICINA(26),
+	PSICOLOGIA_E_PSICANALISE(27),
+	RELIGIAO(28),
+	TURISMO(29);
 	
-	public Categoria(String nome) {
-		this.nome = nome;
+	final int categoria;
+	
+	Categoria(int categoria){
+		this.categoria = categoria;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public String getNome() {
-		return this.nome;
-	}
+	private int getCategoria() {
+		return this.categoria;
+	} 
 }
