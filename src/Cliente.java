@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cliente {
 	private String nome;
@@ -9,7 +10,6 @@ public class Cliente {
 	private String username;
 	private String password;
 	private ArrayList<Endereco> enderecos;
-	private int countEnderecos;
 	
 	
 	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone) {
@@ -18,7 +18,6 @@ public class Cliente {
 		this.cpf = cpf;
 		this.email = email;
 		this.numeroTelefone = numeroTelefone;
-		this.countEnderecos = 0;
 	}
 	
 	
@@ -84,33 +83,38 @@ public class Cliente {
 	//funcoes
 	public void addEndereco(Endereco endereco) {
 		enderecos.add(endereco);
-		++this.countEnderecos;
 	}
 	
-	void updateEnderecoID() {
-		for(int i = countEnderecos - 1; i >= 0; i--) {
-			if(enderecos.get(i).getEnderecoID() != i) {
-				enderecos.get(i).setEnderecoID(i);
+	public boolean delEnderecoCliente() {
+		Scanner in = new Scanner(System.in);
+		boolean executed = false;
+		
+		while(executed == false) {
+			int id = 0;
+			System.out.println("Exibindo endereços cadastrados...");
+			for(Endereco e: enderecos) {
+				System.out.println("ID " + id + ": ");
+				e.showEndereco();
+				System.out.println("\n");
+			}
+			System.out.println("Digite o ID do endereco a ser removido: ");
+			System.out.println("Caso deseje sair, digite -1");
+			int input = in.nextInt();
+			in.hasNextLine();
+			if(input == -1) {
+				in.close();
+				return false;
+			}
+			try {
+				enderecos.remove(input);
+				executed = true;
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Opcao invalida. Tente novamente...");
+				continue;
 			}
 		}
-	}
-	
-	boolean delEnderecoCliente(int enderecoID) {
-		
-		if(enderecoID >= this.countEnderecos) {
-			System.out.println("ERRO: Digite um ID de endereco válido!");
-			return false;
-		}
-		for(Endereco e: enderecos) {
-			if(e.getEnderecoID() == enderecoID) {
-				System.out.println("O endereço com ID: " + enderecoID + "foi excluído!");
-				enderecos.remove(e);
-				return true;
-			}
-		}
-		
-		System.out.println("O endereço não foi encontrado e não pode ser removido!");
-		return false;
+		in.close();
+		return true;
 	}
 	
 }

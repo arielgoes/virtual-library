@@ -9,6 +9,7 @@ public enum Status {
 		this.status = status;
 	}
 	
+	@SuppressWarnings("unused")
 	private int getStatus() {
 		return this.status;
 	}

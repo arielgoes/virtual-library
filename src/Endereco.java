@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 public class Endereco {
-	private int enderecoID; //comeca em 0 sempre
 	private String rua;
 	private String numero;
 	private String complemento;
@@ -9,15 +7,11 @@ public class Endereco {
 	private String cep;
 	private String estado;
 	private String pais;
-	private ArrayList<Pedido> pedidos;
-	private int countPedidos;
-	private Cliente cliente;
 	
-	public Endereco(Cliente cliente, int enderecoID, String rua, String numero, String complemento, String bairro, 
+	public Endereco(String rua, String numero, String complemento, String bairro, 
 			String cidade, String cep, String estado, String pais) {
 		
-		this.cliente = cliente;
-		this.enderecoID = enderecoID;
+
 		this.rua = rua;
 		this.numero = numero;
 		this.complemento = complemento;
@@ -26,18 +20,10 @@ public class Endereco {
 		this.cep = cep;
 		this.estado = estado;
 		this.pais = pais;
-		this.countPedidos = 0;
 	}
 	
 	
 	//sets
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	
-	public void setEnderecoID(int enderecoID) {
-		this.enderecoID = enderecoID;
-	}
 	
 	public void setRua(String rua) {
 		this.rua = rua;
@@ -73,17 +59,6 @@ public class Endereco {
 	
 	
 	//gets
-	public boolean getCliente(Cliente cliente) {
-		if(cliente.equals(this.cliente)) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public int getEnderecoID() {
-		return this.enderecoID;
-	}
 	
 	public String getRua() {
 		return this.rua;
@@ -117,25 +92,12 @@ public class Endereco {
 		return this.pais;
 	}
 	
-	public Endereco getEndereco() {
-		return this.getEndereco();
-	}
 	
-	public boolean getPedido(String numeroPedido) {
-		for(Pedido p: pedidos) {
-			if(p.getNumeroPedido().equals(numeroPedido)){
-				System.out.println("Pedido " + p.getNumeroPedido() + " foi encontrado!");
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	//funcoes
-	public void addPedido(Pedido pedido) {
-		pedidos.add(pedido);
-		++this.countPedidos;
+	public void showEndereco() {
+		System.out.println("Rua: " + this.rua);
+		System.out.println("Numero: " + this.numero);
+		System.out.println("Bairro: " + this.bairro);
+		System.out.println("Cidade: " + this.cidade);
 	}
 	
 }

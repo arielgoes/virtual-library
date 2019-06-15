@@ -37,6 +37,7 @@ public enum Categoria {
 		this.categoria = categoria;
 	}
 	
+	@SuppressWarnings("unused")
 	private int getCategoria() {
 		return this.categoria;
 	} 
