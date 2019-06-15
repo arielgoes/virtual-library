@@ -15,7 +15,7 @@ public class main {
 		
 		System.out.println("Status: " + pedido.getStatus() + " Valor do status: " + pedido.printStatusInteger());
 		
-		pedido.setStatus(status.PEDIDO_PAGO);
+		pedido.setStatus(Status.PEDIDO_PAGO);
 		
 		System.out.println("Status: " + pedido.getStatus() + " Valor do status: " + pedido.printStatusInteger());
 		
