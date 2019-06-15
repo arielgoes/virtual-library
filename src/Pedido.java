@@ -9,6 +9,7 @@ public class Pedido {
 	private Status status; //Classe 'Status'
 	private Cliente cliente; //Classe 'Cliente'
 	private ArrayList<Livro> livros;
+	private int countLivros;
 	
 	
 	Pedido(String numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor, Status status, Cliente cliente){
@@ -19,6 +20,7 @@ public class Pedido {
 		this.livros = new ArrayList<Livro>();
 		this.status = status;
 		this.cliente = cliente;
+		this.countLivros = 0;
 	}
 	
 	
@@ -65,7 +67,7 @@ public class Pedido {
 		return this.valor;
 	}
 	
-	Status getStatus() {
+	Status getStatus() { //retorna o valor referente ao inteiro. Exemplo: SEGUNDA(1), Se '1', retorna 'SEGUNDA';
 		return this.status;
 	}
 	
@@ -77,6 +79,7 @@ public class Pedido {
 	//funçoes
 	void addLivroPedido(Livro livro) {
 		this.livros.add(livro);
+		++this.countLivros;
 	}
 	
 	
@@ -92,4 +95,9 @@ public class Pedido {
 		System.out.println("O livro não foi encontrado e não pode ser removido!");
 		return false;
 	}
+	
+	int printStatusInteger() {
+		return this.status.status;
+	}
+	
 }

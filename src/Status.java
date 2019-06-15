@@ -1,16 +1,16 @@
 
-public class Status {
-	private String nome;
+public enum Status {
+	AGUARDANDO_PAGAMENTO(0), PEDIDO_PAGO(1), PEDIDO_EM_SEPARACAO(2),
+	PEDIDO_ENVIADO(3), PEDIDO_ENTREGUE(4), PEDIDO_CANCELADO(5);
 	
-	public Status(String nome) {
-		this.nome = nome;
+	int status;
+	
+	Status(int status){
+		this.status = status;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	private int getStatus() {
+		return this.status;
 	}
 	
-	public String getNome() {
-		return this.nome;
-	}
 }

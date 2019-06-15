@@ -1,15 +1,17 @@
-
+import java.util.ArrayList;
 public class Endereco {
 	private String rua;
-	private int numero;
+	private String numero;
 	private String complemento;
 	private String bairro;
 	private String cidade;
 	private String cep;
 	private String estado;
 	private String pais;
+	private ArrayList<Pedido> pedidos;
+	private int countPedidos;
 	
-	public Endereco(String rua, int numero, String complemento, String bairro, 
+	public Endereco(String rua, String numero, String complemento, String bairro, 
 			String cidade, String cep, String estado, String pais) {
 		
 		this.rua = rua;
@@ -20,13 +22,16 @@ public class Endereco {
 		this.cep = cep;
 		this.estado = estado;
 		this.pais = pais;
+		this.countPedidos = 0;
 	}
 	
+	
+	//sets
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
 	
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 	
@@ -54,11 +59,13 @@ public class Endereco {
 		this.pais = pais;
 	}
 	
+	
+	//gets
 	public String getRua() {
 		return this.rua;
 	}
 	
-	public int getNumero() {
+	public String getNumero() {
 		return this.numero;
 	}
 	
@@ -85,4 +92,22 @@ public class Endereco {
 	public String getpais() {
 		return this.pais;
 	}
+	
+	public boolean getPedido(String numeroPedido) {
+		for(Pedido p: pedidos) {
+			if(p.getNumeroPedido().equals(numeroPedido)){
+				System.out.println("Pedido " + p.getNumeroPedido() + " foi encontrado!");
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	//funcoes
+	public void addPedido(Pedido pedido) {
+		pedidos.add(pedido);
+		++this.countPedidos;
+	}
+	
 }
