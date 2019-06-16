@@ -2,17 +2,17 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Pedido {
-	private String numeroPedido;
+	private int numeroPedido;
 	private Endereco enderecoEntrega; //Classe 'Endereco'
 	private Date dataPedido;
 	private double valor;
 	private Status status; //Classe 'Status'
 	private Cliente cliente; //Classe 'Cliente'
 	private ArrayList<Livro> livros;
-	private int countLivros;
+
 	
 	
-	Pedido(String numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor, Status status, Cliente cliente){
+	Pedido(int numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor, Status status, Cliente cliente){
 		this.numeroPedido = numeroPedido;
 		this.enderecoEntrega = enderecoEntrega;
 		this.dataPedido = dataPedido;
@@ -20,38 +20,17 @@ public class Pedido {
 		this.livros = new ArrayList<Livro>();
 		this.status = status;
 		this.cliente = cliente;
-		this.countLivros = 0;
 	}
 	
 	
 	//sets
-	void setNumeroPedido(String numeroPedido) {
-		this.numeroPedido = numeroPedido;
-	}
-	
-	void setEnderecoEntrega(Endereco enderecoEntrega) {
-		this.enderecoEntrega = enderecoEntrega;
-	}
-	
-	void setDataPedido(Date dataPedido) {
-		this.dataPedido = dataPedido;
-	}
-	
-	void setValor(double valor) {
-		this.valor = valor;
-	}
-	
 	void setStatus(Status status) {
 		this.status = status;
 	}
 	
-	void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	
 	
 	//gets
-	String getNumeroPedido() {
+	int getNumeroPedido() {
 		return this.numeroPedido;
 	}
 	
@@ -79,7 +58,6 @@ public class Pedido {
 	//funçoes
 	void addLivroPedido(Livro livro) {
 		this.livros.add(livro);
-		++this.countLivros;
 	}
 	
 	

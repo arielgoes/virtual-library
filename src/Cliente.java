@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Cliente {
@@ -10,7 +11,8 @@ public class Cliente {
 	private String username;
 	private String password;
 	private ArrayList<Endereco> enderecos;
-	
+	private ArrayList<Pedido> pedidos;
+	private Carrinho carrinho;
 	
 	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone) {
 		this.nome = nome;
@@ -18,6 +20,7 @@ public class Cliente {
 		this.cpf = cpf;
 		this.email = email;
 		this.numeroTelefone = numeroTelefone;
+		this.carrinho = new Carrinho();
 	}
 	
 	
@@ -115,6 +118,61 @@ public class Cliente {
 		}
 		in.close();
 		return true;
+	}
+	
+	public void addPedido() {
+		Scanner in = new Scanner(System.in);
+		Endereco endereco;
+		if(this.pedidos.size() == 1) {
+			System.out.println("Deseja utilzar este endereço para entrega?\n 1- Sim\n2- Não");
+			this.enderecos.get(0).showEndereco();
+			int choice = in.nextInt();
+			in.hasNextLine();
+			if(choice == 1) {
+				endereco = this.enderecos.get(0);
+			}else {
+				endereco = this.newEndereco();
+			}
+		}
+		else {
+			int id = 0;
+			System.out.println("Digite o ID do endereço escolhido:");
+			for(Endereco e: enderecos) {
+				System.out.print("ID : " + id + ".");
+				e.showEndereco();
+				System.out.println();
+			}
+			int choice = in.nextInt();
+			in.nextLine();
+			endereco = enderecos.get(choice);
+		}
+		Date data = new Date(System.currentTimeMillis());
+		Status status = Status.AGUARDANDO_PAGAMENTO;
+		Pedido p = new Pedido(++LivrariaVirtual.numeroPedido, endereco, data, this.carrinho.getValorTotal(), status, this);
+		this.carrinho.resetCarrinho();
+	}
+	
+	public Endereco newEndereco() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Digite a rua:");
+		String rua = in.nextLine();
+		System.out.println("Digite o numero:");
+		String numero = in.nextLine();
+		System.out.println("Digite o complemento:");
+		String complemento = in.nextLine();
+		System.out.println("Digite o bairro:");
+		String bairro = in.nextLine();
+		System.out.println("Digite a cidade:");
+		String cidade = in.nextLine();
+		System.out.println("Digite o cep:");
+		String cep = in.nextLine();
+		System.out.println("Digite o estado:");
+		String estado = in.nextLine();
+		System.out.println("Digite o país:");
+		String pais = in.nextLine();
+		Endereco e = new Endereco(rua, numero, complemento, bairro, cidade, cep, estado, pais);
+		this.addEndereco(e);
+		return e;
 	}
 	
 }
