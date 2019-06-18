@@ -140,6 +140,7 @@ public class Cliente {
 			for(Endereco e: enderecos) {
 				System.out.print("ID : " + id + ".");
 				e.showEndereco();
+				id++;
 				System.out.println();
 			}
 			int choice = in.nextInt();
@@ -150,6 +151,9 @@ public class Cliente {
 		Status status = Status.AGUARDANDO_PAGAMENTO;
 		Pedido p = new Pedido(++LivrariaVirtual.numeroPedido, endereco, data, this.carrinho.getValorTotal(), status, this);
 		this.carrinho.resetCarrinho();
+		this.pedidos.add(p);
+		LivrariaVirtual.pedidos.add(p);
+		in.close();
 	}
 	
 	public Endereco newEndereco() {
@@ -172,6 +176,7 @@ public class Cliente {
 		String pais = in.nextLine();
 		Endereco e = new Endereco(rua, numero, complemento, bairro, cidade, cep, estado, pais);
 		this.addEndereco(e);
+		in.close();
 		return e;
 	}
 	
