@@ -21,7 +21,11 @@ public class LivrariaVirtual extends JFrame {
 	public static Cliente cliente_atual;
 	public static Scanner in = new Scanner(System.in);
 	
-	public static void main(String args[]) {
+	public static void main(String args[]) throws FileNotFoundException {
+		
+		//load Editoras
+		loadEditoras(editoras);
+		System.out.println(editoras.get(2).getNome());
 		
 		boolean running = false;
 		boolean logged = false;
@@ -58,6 +62,7 @@ public class LivrariaVirtual extends JFrame {
 			running = true;
 		}
 		in.close();
+		
 	}
 	
 	
@@ -121,21 +126,53 @@ public class LivrariaVirtual extends JFrame {
 	}
 	
 	
-	public static void loadEditoras() throws FileNotFoundException{
+	public static void loadEditoras(ArrayList<Editora> editoraArray) throws FileNotFoundException{
+		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
 		String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
 		File file = new File(pathEditoras); 
 		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
 		
+		String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
+		File file2 = new File(pathEnderecos); 
+		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
+		
+		//ler enderecos das editoras
+		try {
+			String st2;
+			while((st2 = br2.readLine()) != null) {
+				String[] split2 = st2.split(";");
+				String rua = split2[0];
+				String numero = split2[1];
+				String complemento = split2[2];
+				String bairro = split2[3];
+				String cidade = split2[4];
+				String cep = split2[5];
+				String estado = split2[6];
+				String pais = split2[7];
+				
+				Endereco enderecoEd = new Endereco(rua, numero, complemento, bairro, cidade, cep, estado, pais);
+				enderecoEditora.add(enderecoEd);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+
+		//ler editoras
+		int i = 0;
 		try {
 			String st;
-			while( (st = br.readLine()) != null) {
+			while((st = br.readLine()) != null) {
 				
 				String[] split = st.split(";");
 				String nome = split[0];
-				Endereco endereco = split[1];
+				Endereco endereco = enderecoEditora.get(i);
 				String telefone = split[2];
 				String cnpj = split[3];
+				i++;
 				
+				Editora editora = new Editora(nome, endereco, telefone, cnpj);
+				editoraArray.add(editora);
 			}
 			
 			

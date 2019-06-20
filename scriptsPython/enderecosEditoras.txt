@@ -1,0 +1,3 @@
+Rua da Editora 1;123;Predio;Bairro da Editora 1;Alegrete;12.123.123;RS;Brasil
+Rua da Editora 2;456;Predio;Bairro da Editora 2;Santiago;456.456.456;RS;Brasil
+Rua da Editora 3;789;Predio;Bairro da Editora 3;Pelotas;78.789.789;RS;Brasil
