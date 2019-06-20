@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -9,10 +10,10 @@ public class LivrariaVirtual extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static int numeroPedido = 0;
 	
-	//private static ArrayList<Editora> editoras = new ArrayList<Editora>();
+	private static ArrayList<Editora> editoras = new ArrayList<Editora>();
 	private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-	//private static ArrayList<Autor> autores = new ArrayList<Autor>();
-	//private static ArrayList<Livro> livros = new ArrayList<Livro>();
+	private static ArrayList<Autor> autores = new ArrayList<Autor>();
+	private static ArrayList<Livro> livros = new ArrayList<Livro>();
 	public static ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
 	private static Hashtable<String, String> users = new Hashtable<String, String>();
 	
@@ -118,6 +119,36 @@ public class LivrariaVirtual extends JFrame {
 		clientes.add(c);
 		users.put(c.getUsername(), c.getPassword());
 	}
+	
+	
+	public static void loadEditoras() throws FileNotFoundException{
+		String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
+		File file = new File(pathEditoras); 
+		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
+		
+		try {
+			String st;
+			while( (st = br.readLine()) != null) {
+				
+				String[] split = st.split(";");
+				String nome = split[0];
+				Endereco endereco = split[1];
+				String telefone = split[2];
+				String cnpj = split[3];
+				
+			}
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/*public static void loadLivros() throws FileNotFoundException {
+		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython";
+		File file = new File(pathLivros); 
+		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
+	}*/
 	
 	
 	
