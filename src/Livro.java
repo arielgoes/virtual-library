@@ -74,6 +74,16 @@ public class Livro {
 		this.editora = editora;
 	}
 	
+	public boolean setAutor(ArrayList<Autor> autores, String nomeAutor) {
+		for(Autor a: autores) {
+			if(a.getnomeAutor().equals(nomeAutor)){
+				this.autores.add(a);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 	//gets
 	public String getIsbn() {
@@ -109,7 +119,7 @@ public class Livro {
 	}
 	
 	
-	public Categoria getCategoria(Categoria categoria) {
+	public Categoria getCategoria() {
 		return this.categoria;
 	}
 	
@@ -169,7 +179,7 @@ public class Livro {
 	}
 	
 	
-	int printCategoriaInteger() {
+	int showCategoriaInteger() {
 		return this.categoria.categoria;
 	}
 	

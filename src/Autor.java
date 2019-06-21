@@ -8,7 +8,7 @@ public class Autor {
 	private String localNascimento;
 	private String localMorte;
 	private String bibliografia;
-	private ArrayList<Livro> livros;
+	private ArrayList<Livro> livros = new ArrayList<Livro>();
 	
 	public Autor(String nome, Date dataNascimento, Date dataMorte, String localNascimento, String localMorte, String bibliografia){
 		this.nomeAutor = nome;

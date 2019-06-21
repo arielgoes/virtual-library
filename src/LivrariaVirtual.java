@@ -28,24 +28,20 @@ public class LivrariaVirtual extends JFrame {
 		
 		//load Editoras
 		loadEditoras(editoras);
-		System.out.println(editoras.get(2).getNome());
+		//System.out.println(editoras.get(2).getNome());
 		
 		//test autores
 		loadAutores(autores);
 		
-		/*for(Autor a: autores) {
-			a.showAutor();
-		}*/
-		
 		loadLivros(livros, editoras);
-		System.out.println(livros.get(49).getIsbn());
 		
 		//adicionando os livros em autores...
 		addLivrosToAutores(livros, autores);
-		
-		/*for(int i = 0; i < autores.size(); i++) {
-			autores.get(i).showLivros();
-		}*/
+
+		for(Autor a: autores) {
+			a.showLivros();
+			System.out.println("\n");
+		}
 		
 		
 		boolean running = false;
@@ -262,7 +258,6 @@ public class LivrariaVirtual extends JFrame {
 				double preco = Double.parseDouble(split[5]);
 				double precoCusto = Double.parseDouble(split[6]);
 				
-				Categoria categoria = fromString(split[7]);
 				
 				int i = 0;
 				for(Editora e: editoras) {
@@ -272,7 +267,11 @@ public class LivrariaVirtual extends JFrame {
 					i++;
 				}
 				
-				Livro livro = new Livro(isbn, titulo, resumo, material, dataPub, preco, precoCusto, categoria, editoras.get(i));
+				
+				Livro livro = new Livro(isbn, titulo, resumo, material, dataPub, preco, precoCusto, Categoria.valueOf(split[7]), editoras.get(i));
+				String nomeAutor = split[9];
+				livro.setAutor(autores, nomeAutor);
+				//System.out.println(livro.showCategoriaInteger());
 				livros.add(livro);
 			}
 		}catch(IOException e) {
@@ -290,9 +289,6 @@ public class LivrariaVirtual extends JFrame {
 				}
 			}
 		}
-		
-		
-		
 	}
 	
 	
