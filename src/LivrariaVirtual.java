@@ -195,12 +195,10 @@ public class LivrariaVirtual extends JFrame {
 		String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
 		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
 		
-		int i = 0;
-		int j = 0;
-		int caso = 1;
 		try {
+			int i = 0;
 			String st;
-			String nomesAutores;
+			String nomesAutores = null;
 			while((st = br.readLine()) != null) {
 				
 				String[] split = st.split(";");
@@ -213,14 +211,16 @@ public class LivrariaVirtual extends JFrame {
 				String localMorte = split[4];
 				String bibliografia = split[5];
 				
-				if(nomesAutores.equals(nomeAutor)) {
-					Autor autor = new Autor(nomeAutor, dataNascimento, dataMorte, localNascimento, localMorte, bibliografia);
-					nomesAutores = nomeAutor;
-					autores.add(autor);
-				}else {
-					i++;
-					continue;
-				}	
+					if(nomeAutor.equals(nomesAutores)) {
+						continue;
+					}
+				
+				
+				Autor autor = new Autor(nomeAutor, dataNascimento, dataMorte, localNascimento, localMorte, bibliografia);
+				autores.add(autor);
+				nomesAutores = nomeAutor;
+				
+				
 			}
 
 		}catch (IOException e) {
