@@ -12,12 +12,11 @@ public class Livro {
 	private Categoria categoria;
 	private Editora editora;
 
-	
 	//Dados de Conhecimento do Gerente do Sistema
 	private double precoCusto;
 	private double margemLucro;
 	private int estoque = 0;
-	//Fim dos Dados de Conhecimento do GErente do Sistema
+	//Fim dos Dados de Conhecimento do Gerente do Sistema
 	
 	public Livro(String isbn, String titulo, String resumo, String material, Date dataPub, double preco, double precoCusto, 
 				Categoria cat, Editora editora) {
@@ -31,7 +30,6 @@ public class Livro {
 		this.categoria = cat;
 		this.autores = new ArrayList<Autor>();
 		this.editora = editora;
-		
 		this.precoCusto = precoCusto;
 		this.margemLucro = this.preco - this.precoCusto;
 	}

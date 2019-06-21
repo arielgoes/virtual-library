@@ -10,10 +10,12 @@ public class Autor {
 	private String bibliografia;
 	private ArrayList<Livro> livros;
 	
-	public Autor(String nome, Date dataNascimento, String localNascimento, String bibliografia){
+	public Autor(String nome, Date dataNascimento, Date dataMorte, String localNascimento, String localMorte, String bibliografia){
 		this.nomeAutor = nome;
 		this.dataNascimento = dataNascimento;
+		this.dataMorte = dataMorte;
 		this.localNascimento = localNascimento;
+		this.localMorte = localMorte;
 		this.bibliografia = bibliografia;
 	}
 	

@@ -1,5 +1,8 @@
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -21,11 +24,19 @@ public class LivrariaVirtual extends JFrame {
 	public static Cliente cliente_atual;
 	public static Scanner in = new Scanner(System.in);
 	
-	public static void main(String args[]) throws FileNotFoundException {
+	public static void main(String args[]) throws FileNotFoundException, ParseException {
 		
 		//load Editoras
 		loadEditoras(editoras);
 		System.out.println(editoras.get(2).getNome());
+		
+		
+		//test autores
+		loadAutores(autores);
+		
+		for(Autor a: autores) {
+			a.showAutor();
+		}
 		
 		boolean running = false;
 		boolean logged = false;
@@ -129,11 +140,9 @@ public class LivrariaVirtual extends JFrame {
 	public static void loadEditoras(ArrayList<Editora> editoraArray) throws FileNotFoundException{
 		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
 		String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
-		File file = new File(pathEditoras); 
 		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
 		
 		String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
-		File file2 = new File(pathEnderecos); 
 		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
 		
 		//ler enderecos das editoras
@@ -181,11 +190,73 @@ public class LivrariaVirtual extends JFrame {
 		}
 	}
 	
-	/*public static void loadLivros() throws FileNotFoundException {
-		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython";
-		File file = new File(pathLivros); 
+	
+	public static void loadAutores(ArrayList<Autor> autores) throws FileNotFoundException, ParseException{
+		String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
+		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
+		
+		int i = 0;
+		int j = 0;
+		int caso = 1;
+		try {
+			String st;
+			String nomesAutores;
+			while((st = br.readLine()) != null) {
+				
+				String[] split = st.split(";");
+				String nomeAutor = split[0];
+				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[1]);
+				Date dataNascimento = date;
+				date = new SimpleDateFormat("dd/MM/yyyy").parse(split[2]);
+				Date dataMorte = date;
+				String localNascimento = split[3];
+				String localMorte = split[4];
+				String bibliografia = split[5];
+				
+				if(nomesAutores.equals(nomeAutor)) {
+					Autor autor = new Autor(nomeAutor, dataNascimento, dataMorte, localNascimento, localMorte, bibliografia);
+					nomesAutores = nomeAutor;
+					autores.add(autor);
+				}else {
+					i++;
+					continue;
+				}	
+			}
+
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public static void loadLivros() throws FileNotFoundException, ParseException {
+		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
 		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
-	}*/
+		
+		try {
+			String st;
+			while((st = br.readLine()) != null) { //CORRIGIR...
+				String split[] = st.split(";");
+				String isbn = split[0];
+				String titulo = split[1];
+				String resumo = split[2];
+				String material = split[3];
+				double preco = split[4];
+				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[5]);
+				Date dataPub = date;
+				Categoria categoria = new Categoria(Integer.parseInt(split[6]));
+				Editora Editora;
+				double precoCusto = split[8];
+				int estoque = split[9];
+				
+				Livro livro = new Livro(isbn, titulo, resumo, material, preco, dataPub, 0, );
+				
+			}
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
