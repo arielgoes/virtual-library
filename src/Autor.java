@@ -71,7 +71,7 @@ public class Autor {
 		return this.bibliografia;
 	}
 	
-	public boolean getLivroAutor(String titulo) {
+	public boolean getLivroAutor(String titulo) throws NullPointerException{
 		for(Livro l: livros) {
 			if(l.getTitulo().equals(titulo)) {
 				System.out.println("O livro " + titulo + "foi encontrado!");
@@ -91,6 +91,11 @@ public class Autor {
 		System.out.println("Data Nascimento: " + this.dataNascimento.toString() + ".");
 		System.out.println("Local Nascimento: " + this.localNascimento + ".");
 	}
-		
+	
+	public void showLivros() throws NullPointerException{
+		for(Livro l: this.livros) {
+			System.out.println(l.getTitulo());
+		}
+	}
 
 }

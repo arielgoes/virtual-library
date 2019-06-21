@@ -122,6 +122,15 @@ public class Livro {
 		return this.estoque;
 	}
 	
+	public String getNomeAutor(String nomeAutor) {
+		for(Autor a:this.autores) {
+			if(a.getnomeAutor().equals(nomeAutor)) {
+				return nomeAutor;
+			}
+		}
+		return null;
+	}
+	
 	public void addEstoque(int quant) {
 		this.estoque += quant;
 	}
@@ -163,4 +172,5 @@ public class Livro {
 	int printCategoriaInteger() {
 		return this.categoria.categoria;
 	}
+	
 }

@@ -30,13 +30,23 @@ public class LivrariaVirtual extends JFrame {
 		loadEditoras(editoras);
 		System.out.println(editoras.get(2).getNome());
 		
-		
 		//test autores
 		loadAutores(autores);
 		
-		for(Autor a: autores) {
+		/*for(Autor a: autores) {
 			a.showAutor();
-		}
+		}*/
+		
+		loadLivros(livros, editoras);
+		System.out.println(livros.get(49).getIsbn());
+		
+		//adicionando os livros em autores...
+		addLivrosToAutores(livros, autores);
+		
+		/*for(int i = 0; i < autores.size(); i++) {
+			autores.get(i).showLivros();
+		}*/
+		
 		
 		boolean running = false;
 		boolean logged = false;
@@ -196,7 +206,6 @@ public class LivrariaVirtual extends JFrame {
 		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
 		
 		try {
-			int i = 0;
 			String st;
 			String nomesAutores = null;
 			while((st = br.readLine()) != null) {
@@ -211,26 +220,32 @@ public class LivrariaVirtual extends JFrame {
 				String localMorte = split[4];
 				String bibliografia = split[5];
 				
-					if(nomeAutor.equals(nomesAutores)) {
-						continue;
-					}
-				
+				if(nomeAutor.equals(nomesAutores)) {
+					continue;
+				}
 				
 				Autor autor = new Autor(nomeAutor, dataNascimento, dataMorte, localNascimento, localMorte, bibliografia);
 				autores.add(autor);
 				nomesAutores = nomeAutor;
-				
-				
 			}
-
+			
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	
-	public static void loadLivros() throws FileNotFoundException, ParseException {
+	public static Categoria fromString(String text) {
+        for (Categoria c : Categoria.values()) {
+            if (c.equals(text)) {
+                return c;
+            }
+        }
+        return null;
+    }
+	
+	
+	public static void loadLivros(ArrayList<Livro> livros, ArrayList<Editora> editoras) throws FileNotFoundException, ParseException {
 		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
 		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
 		
@@ -242,22 +257,43 @@ public class LivrariaVirtual extends JFrame {
 				String titulo = split[1];
 				String resumo = split[2];
 				String material = split[3];
-				double preco = split[4];
-				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[5]);
+				Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[4]);
 				Date dataPub = date;
-				Categoria categoria = new Categoria(Integer.parseInt(split[6]));
-				Editora Editora;
-				double precoCusto = split[8];
-				int estoque = split[9];
+				double preco = Double.parseDouble(split[5]);
+				double precoCusto = Double.parseDouble(split[6]);
 				
-				Livro livro = new Livro(isbn, titulo, resumo, material, preco, dataPub, 0, );
+				Categoria categoria = fromString(split[7]);
 				
+				int i = 0;
+				for(Editora e: editoras) {
+					if(split[8].equals(e.getNome())) {
+						break;
+					}
+					i++;
+				}
+				
+				Livro livro = new Livro(isbn, titulo, resumo, material, dataPub, preco, precoCusto, categoria, editoras.get(i));
+				livros.add(livro);
 			}
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	
+	public static void addLivrosToAutores(ArrayList<Livro> livros, ArrayList<Autor> autores) {
+		
+		for(Autor a: autores) {
+			for(Livro l: livros) {
+				if(a.getnomeAutor().equals(l.getNomeAutor(a.getnomeAutor()))) {
+					a.setLivroAutor(l);
+				}
+			}
+		}
+		
+		
+		
+	}
 	
 	
 }
