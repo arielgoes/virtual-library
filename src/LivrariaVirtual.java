@@ -41,8 +41,6 @@ public class LivrariaVirtual extends JFrame {
 		
 		control.addLivrosToAutores();
 		
-		control.realizarCadastro();
-		
 		control.realizarLogin();
 	
 	}

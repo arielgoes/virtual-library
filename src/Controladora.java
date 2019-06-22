@@ -208,17 +208,27 @@ public class Controladora {
 						if(users.containsKey(username)) {
 							if(users.get(username).contentEquals(password)) {
 								for(Cliente c: clientes) {
-									if(c.getUsername().equals(username) && c.getPassword().equals(password)) {										cliente_atual = c;
-										System.out.println("Logado com sucesso como " + c.getNome() + ".");
+									if(c.getUsername().equals(username) && c.getPassword().equals(password)) {
+										new iMessage("Logado com sucesso como " + c.getNome() + ".");
+										cliente_atual = c;
+										login.setVisible(false);
+										login.dispose();
 										break;
 									}
 								}
 							}else {
-								System.out.println("Não foi possível realizar o login, senha incorreta. Tenta Novamente.");
+								new iMessage("Nome de usuário ou senha incorretos.");
 							}
 						}else {
-							System.out.println("Não foi possível realizar o login, usuário incorreto. Tenta Novamente.");
+							new iMessage("Nome de usuário ou senha incorretos.");
 						}
+					}
+					
+				});
+				
+				login.registerButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+							realizarCadastro();
 					}
 					
 				});
