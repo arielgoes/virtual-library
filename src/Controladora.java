@@ -238,28 +238,38 @@ public class Controladora {
 	}
 	
 	public void realizarCadastro() {
-		System.out.println("Digite seu nome: ");
-		String nome = in.nextLine();
-		System.out.println("Digite sua idade: ");
-		String idade = in.nextLine();
-		System.out.println("Digite seu CPF: ");
-		String cpf = in.nextLine();
-		System.out.println("Digite seu email: ");
-		String email = in.nextLine();
-		System.out.println("Digite seu número de telefone: ");
-		String numeroTelefone = in.nextLine();
 		
-		Cliente c = new Cliente(nome, idade, cpf, email, numeroTelefone);
-		
-		System.out.println("Digite seu Login: ");
-		String login = in.nextLine();
-		System.out.println("Digite sua Senha: ");
-		String senha = in.nextLine();
-		
-		c.setUsername(login);
-		c.setPassword(senha);
-		
-		clientes.add(c);
-		users.put(login, senha);
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				iRegistro registro = new iRegistro();
+				registro.OkButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String nome = registro.nameField.getText();
+						String idade = registro.idadeField.getText();
+						String cpf = registro.cpfField.getText();
+						String email = registro.emailField.getText();
+						String telefone = registro.telefoneField.getText();
+						String username = registro.usernameField.getText();
+						String password = registro.passwordField.getText();
+						
+						Cliente c = new Cliente(nome, idade, cpf, email, telefone, username, password);
+						clientes.add(c);
+						users.put(username, password);
+						
+						new iMessage("Registro Bem Sucedido");
+						
+						registro.setVisible(false);
+						registro.dispose();	
+					}
+				});
+				
+				registro.CancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						registro.setVisible(false);
+						registro.dispose();
+					}		
+				});
+			}
+		});
 	}
 }

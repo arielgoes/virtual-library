@@ -13,13 +13,14 @@ public class LivrariaVirtual extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	public static int numeroPedido = 0;
+	public static Controladora control;
 	
 	
 	public static Scanner in = new Scanner(System.in);
 	
 	public static void main(String args[]){
 		
-		Controladora control = new Controladora();
+		control = new Controladora();
 		
 		try {
 			control.loadEditoras();
@@ -42,6 +43,13 @@ public class LivrariaVirtual extends JFrame {
 		control.addLivrosToAutores();
 		
 		control.realizarLogin();
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new iMessage("Funcionando");
+			}
+			
+		});
 	
 	}
 }

@@ -14,12 +14,18 @@ public class Cliente {
 	private ArrayList<Pedido> pedidos;
 	private Carrinho carrinho;
 	
-	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone) {
+	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone, String username, String password) {
 		this.nome = nome;
 		this.idade = idade;
 		this.cpf = cpf;
 		this.email = email;
 		this.numeroTelefone = numeroTelefone;
+		this.carrinho = new Carrinho();
+		this.username = username;
+		this.password = password;
+		
+		this.enderecos = new ArrayList<Endereco>();
+		this.pedidos = new ArrayList<Pedido>();
 		this.carrinho = new Carrinho();
 	}
 	
@@ -152,7 +158,7 @@ public class Cliente {
 		Pedido p = new Pedido(++LivrariaVirtual.numeroPedido, endereco, data, this.carrinho.getValorTotal(), status, this);
 		this.carrinho.resetCarrinho();
 		this.pedidos.add(p);
-		LivrariaVirtual.pedidos.add(p);
+		LivrariaVirtual.control.pedidos.add(p);
 		in.close();
 	}
 	
