@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Scanner;
+
+import javax.swing.SwingUtilities;
 
 public class Controladora {
 	
@@ -40,7 +44,7 @@ public class Controladora {
 		String pathEnderecos = "/home/lopesvictor/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
 		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
 		
-		//ler enderecos das editoras
+		
 		try {
 			String st2;
 			while((st2 = br2.readLine()) != null) {
@@ -186,74 +190,41 @@ public class Controladora {
 		return this.autores;
 	}
 	
-	public void logar() {
-		boolean running = false;
-		boolean logged = false;
-		
-		while(running == false) {
-			
-			while(!logged) {
-				System.out.println("Selecione a opção:\n1 - Realizar Login\n2 - Realizar Cadastro");
-				int op = 0;
-				if(in.hasNextLine()) {
-					op = in.nextInt();
-					in.nextLine();
-				}
-				
-				if(op == 1) {
-					if(realizarLogin()) {
-						logged = true;
-					}
-				}else if(op == 2) {
-					realizarCadastro();
-				}else {
-					System.out.println("Digite uma opção válida.");
-					logged = false;
-				}
-			}
-			
-			System.out.println("Selecione uma das Opções:\n1 - ");
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			running = true;
-		}
-		in.close();
-		
-	}
+	
+	
+	
+	public void realizarLogin() {
 
-	public boolean realizarLogin() {
-		boolean logged = false;
-		while(logged == false) {
-			System.out.println("Digite 0 para sair, ou 1 para continuar: ");
-			int op = in.nextInt();
-			in.nextLine();
-			
-			if(op == 1) {
-				System.out.println("Digite o login:");
-				String login = in.nextLine();
-				System.out.println("Digite a senha:");
-				String senha = in.nextLine();
-				if(users.containsKey(login)) {
-					if(users.contains(senha)) {
-						for(Cliente c: clientes) {
-							if(c.getUsername().equals(login) && c.getPassword().equals(senha)) {
-								System.out.println("Logado com sucesso como " + c.getNome() + ".");
+		SwingUtilities.invokeLater(new Runnable() {
+
+			public void run() {
+				iLogin login = new iLogin();
+				
+				login.loginButton.addActionListener(new ActionListener() {
+
+					public void actionPerformed(ActionEvent arg0) {
+						final String username = login.getUsernameField();
+						final String password = login.getPasswordField();
+						if(users.containsKey(username)) {
+							if(users.get(username).contentEquals(password)) {
+								for(Cliente c: clientes) {
+									if(c.getUsername().equals(username) && c.getPassword().equals(password)) {										cliente_atual = c;
+										System.out.println("Logado com sucesso como " + c.getNome() + ".");
+										break;
+									}
+								}
+							}else {
+								System.out.println("Não foi possível realizar o login, senha incorreta. Tenta Novamente.");
 							}
-							cliente_atual = c;
-							logged = true;
+						}else {
+							System.out.println("Não foi possível realizar o login, usuário incorreto. Tenta Novamente.");
 						}
 					}
-				}else {
-					System.out.println("Não foi possível realizar o login, usuário e/ou senha incorretos. Tenta Novamente.");
-				}
-			}else {
-				return false;
+					
+				});
 			}
-		}
-		return true;
+			
+		});
 	}
 	
 	public void realizarCadastro() {
@@ -279,6 +250,6 @@ public class Controladora {
 		c.setPassword(senha);
 		
 		clientes.add(c);
-		users.put(c.getUsername(), c.getPassword());
+		users.put(login, senha);
 	}
 }

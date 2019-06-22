@@ -7,6 +7,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class LivrariaVirtual extends JFrame {
 
@@ -16,27 +17,33 @@ public class LivrariaVirtual extends JFrame {
 	
 	public static Scanner in = new Scanner(System.in);
 	
-	public static void main(String args[]) throws FileNotFoundException, ParseException {
+	public static void main(String args[]){
 		
 		Controladora control = new Controladora();
 		
-		//load Editoras
-		control.loadEditoras();
-		
-		//test autores
-		control.loadAutores();
-		
-		control.loadLivros();
-		
-		//adicionando os livros em autores...
-		control.addLivrosToAutores();
-
-		for(Autor a: control.autores) {
-			a.showLivros();
-			System.out.println("\n");
+		try {
+			control.loadEditoras();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		
-		control.logar();
+		try {
+			control.loadAutores();
+		} catch (FileNotFoundException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			control.loadLivros();
+		} catch (FileNotFoundException | ParseException e) {
+			e.printStackTrace();
+		}
+		
+		control.addLivrosToAutores();
+		
+		control.realizarCadastro();
+		
+		control.realizarLogin();
 	
 	}
 }
