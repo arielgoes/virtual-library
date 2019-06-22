@@ -65,7 +65,7 @@ public class iLogin extends JFrame{
 		add(registerButton, gc);
 		
 		setVisible(true);
-		setSize(500, 400);
+		setSize(500, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
