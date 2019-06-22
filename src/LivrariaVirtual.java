@@ -145,10 +145,12 @@ public class LivrariaVirtual extends JFrame {
 	
 	public static void loadEditoras(ArrayList<Editora> editoraArray) throws FileNotFoundException{
 		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
-		String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
+		//String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
+		String pathEditoras = "/home/lopesvictor/git/livraria-virtual/scriptsPython/editoras.txt";
 		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
 		
-		String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
+		//String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
+		String pathEnderecos = "/home/lopesvictor/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
 		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
 		
 		//ler enderecos das editoras
@@ -198,7 +200,8 @@ public class LivrariaVirtual extends JFrame {
 	
 	
 	public static void loadAutores(ArrayList<Autor> autores) throws FileNotFoundException, ParseException{
-		String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
+		//String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
+		String pathAutores = "/home/lopesvictor/git/livraria-virtual/scriptsPython/autores.txt";
 		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
 		
 		try {
@@ -242,7 +245,8 @@ public class LivrariaVirtual extends JFrame {
 	
 	
 	public static void loadLivros(ArrayList<Livro> livros, ArrayList<Editora> editoras) throws FileNotFoundException, ParseException {
-		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
+		//String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
+		String pathLivros = "/home/lopesvictor/git/livraria-virtual/scriptsPython/livros.txt"; 
 		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
 		
 		try {
