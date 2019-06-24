@@ -272,4 +272,40 @@ public class Controladora {
 			}
 		});
 	}
+	
+	
+	public void realizarPesquisa() {
+		ArrayList<Livro> busca = new ArrayList<Livro>();
+		busca = buscar("teste", 1);
+	}
+	
+	public ArrayList<Livro> buscar(String strBusca, int tipoBusca){
+		ArrayList<Livro> buscados = new ArrayList<Livro>();
+		switch(tipoBusca) {
+		//nome do livro
+		case 1:
+			for(Livro l: livros) {
+				if(l.getTitulo().contains(strBusca)) {
+					buscados.add(l);
+				}
+			}
+			break;
+		//nome do autor
+		case 2:
+			for(Livro l: livros) {
+				for(Autor a: l.getAutores()) {
+					if(a.getnomeAutor().contains(strBusca)) {
+						buscados.add(l);
+					}
+				}
+			}
+			break;
+		//categoria
+		case 3:
+			break;
+		default:
+			break;
+		}
+		return buscados;
+	}
 }

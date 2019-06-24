@@ -171,6 +171,10 @@ public class Livro {
 		}
 	}
 	
+	public ArrayList<Autor> getAutores(){
+		return this.autores;
+	}
+	
 	public void showLivro() {
 		System.out.println("Titulo: " + this.titulo);
 		System.out.println("ISBN: " + this.isbn);
@@ -179,8 +183,12 @@ public class Livro {
 	}
 	
 	
-	int showCategoriaInteger() {
+	public int showCategoriaInteger() {
 		return this.categoria.categoria;
+	}
+	
+	public String showCategoriaName() {
+		return this.categoria.name();
 	}
 	
 }
