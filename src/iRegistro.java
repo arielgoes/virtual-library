@@ -3,6 +3,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 import javax.swing.SpringLayout;
 
 public class iRegistro extends JFrame{
@@ -41,7 +42,7 @@ public class iRegistro extends JFrame{
 		emailField = new JTextField(20);
 		telefoneField = new JTextField(20);
 		usernameField = new JTextField(20);
-		passwordField = new JTextField(20);
+		passwordField = new JPasswordField(20);
 		
 		nameLabel = new JLabel("Nome");
 		idadeLabel = new JLabel("Idade");
@@ -86,6 +87,7 @@ public class iRegistro extends JFrame{
 		panel.add(passwordLabel);
 		passwordLabel.setLabelFor(passwordField);
 		panel.add(passwordField);
+		
 		
 		panel.add(CancelButton);
 		panel.add(OkButton);
