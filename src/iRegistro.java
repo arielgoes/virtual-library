@@ -28,7 +28,7 @@ public class iRegistro extends JFrame{
 	JButton CancelButton;
 	
 	public iRegistro() {
-		setTitle("Registro");
+		setTitle("Livraria Virtual - Registro");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 300);

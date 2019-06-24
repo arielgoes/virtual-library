@@ -176,10 +176,11 @@ public class Livro {
 	}
 	
 	public void showLivro() {
-		System.out.println("Titulo: " + this.titulo);
 		System.out.println("ISBN: " + this.isbn);
+		System.out.println("Titulo: " + this.titulo);
 		System.out.println("Material: " + this.material);
 		System.out.println("Preco: " + this.preco);
+		System.out.println("Categoria: " + this.showCategoriaName());
 	}
 	
 	

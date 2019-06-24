@@ -24,6 +24,8 @@ public class Controladora {
 	public static Cliente cliente_atual;
 	public Scanner in = new Scanner(System.in);
 	
+	public ArrayList<Livro> buscados = null;
+	
 	public Controladora() {
 		editoras = new ArrayList<Editora>();
 		clientes = new ArrayList<Cliente>();
@@ -213,7 +215,6 @@ public class Controladora {
 										cliente_atual = c;
 										login.setVisible(false);
 										login.dispose();
-										break;
 									}
 								}
 							}else {
@@ -275,8 +276,37 @@ public class Controladora {
 	
 	
 	public void realizarPesquisa() {
-		ArrayList<Livro> busca = new ArrayList<Livro>();
-		busca = buscar("teste", 1);
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				iBusca busca = new iBusca();
+				
+				busca.nome.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						buscados = buscar(busca.field.getText(), 1);
+						new iTable(buscados);
+					}
+					
+				});
+				
+				busca.autor.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						buscados = buscar(busca.field.getText(), 2);
+						new iTable(buscados);
+					}
+					
+				});
+				
+				busca.categoria.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						buscados = buscar(busca.field.getText(), 2);
+						new iTable(buscados);
+					}
+					
+				});
+				
+			}
+			
+		});
 	}
 	
 	public ArrayList<Livro> buscar(String strBusca, int tipoBusca){
@@ -302,8 +332,11 @@ public class Controladora {
 			break;
 		//categoria
 		case 3:
-			break;
-		default:
+			for(Livro l: livros) {
+				if(l.showCategoriaName().contains(strBusca)) {
+					buscados.add(l);
+				}
+			}
 			break;
 		}
 		return buscados;

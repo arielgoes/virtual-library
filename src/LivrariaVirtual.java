@@ -2,10 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Hashtable;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -19,6 +16,7 @@ public class LivrariaVirtual extends JFrame {
 	
 	
 	public static Scanner in = new Scanner(System.in);
+	public static boolean logged = false;
 	
 	public static void main(String args[]){
 		
@@ -44,24 +42,32 @@ public class LivrariaVirtual extends JFrame {
 		
 		control.addLivrosToAutores();
 		
-		control.realizarLogin();
-		
 		SwingUtilities.invokeLater(new Runnable() {
+	
 			public void run() {
+				
 				iMain main = new iMain();
 				
+				main.login.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						control.realizarLogin();
+						main.busca.setEnabled(true);
+						main.pedidos.setEnabled(true);
+						main.carrinho.setEnabled(true);
+						main.compra.setEnabled(true);
+					}
+				});
+					
 				main.busca.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						new iMessage("NÃO IMPLEMENTADO AINDA");
+						control.realizarPesquisa();
 					}
-					
 				});
 				
 				main.pedidos.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						new iMessage("NÃO IMPLEMENTADO AINDA");
 					}
-					
 				});
 				
 				main.carrinho.addActionListener(new ActionListener() {
@@ -76,10 +82,6 @@ public class LivrariaVirtual extends JFrame {
 					}
 				});
 			}
-			
 		});
-		
-		
-	
 	}
 }
