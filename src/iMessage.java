@@ -18,6 +18,7 @@ public class iMessage extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(500, 200);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel);

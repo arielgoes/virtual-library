@@ -26,6 +26,7 @@ public class iTable extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Livraria Virtual - Resultados da Busca");
+		setLocationRelativeTo(null);
 		
 		List<List<String>> data = new ArrayList<List<String>>();
 		String[] colunas = {"ISBN", "Título", "Cacteogria", "Preço"};
@@ -46,7 +47,7 @@ public class iTable extends JFrame{
 		
 		cancel = new JButton("Cancelar");
 		maisInfo = new JButton("Mais Info");
-		addCarrinho = new JButton("Add ao Carrinho");
+		addCarrinho = new JButton("Adicionar ao Carrinho");
 		
 		Container content = getContentPane();
 		SpringLayout layout = new SpringLayout();

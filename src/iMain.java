@@ -17,10 +17,11 @@ public class iMain extends JFrame{
 	public JButton compra;
 	
 	public iMain() {
-		setSize(200, 400);
+		setSize(220, 400);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Livraria Virtual");
+		setLocationRelativeTo(null);
 		
 		Container content = getContentPane();
 		

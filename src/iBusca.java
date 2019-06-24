@@ -19,6 +19,7 @@ public class iBusca extends JFrame{
 		setSize(700, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		setLocationRelativeTo(null);
 		
 		label = new JLabel("Parâmetro da Busca: ");
 		field = new JTextField();

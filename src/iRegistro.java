@@ -32,6 +32,7 @@ public class iRegistro extends JFrame{
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(500, 300);
+		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel);

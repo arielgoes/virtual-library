@@ -19,7 +19,11 @@ public class iLogin extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public iLogin() {
-		super("Livraria Virtual - Login");
+		setTitle("Livraria Virtual - Login");
+		setVisible(true);
+		setSize(500, 200);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 		
 		loginButton = new JButton("Login");
 		registerButton = new JButton("Registro");
@@ -63,10 +67,6 @@ public class iLogin extends JFrame{
 		gc.gridy = 2;
 		gc.fill = GridBagConstraints.NONE;
 		add(registerButton, gc);
-		
-		setVisible(true);
-		setSize(500, 200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public String getUsernameField() {
