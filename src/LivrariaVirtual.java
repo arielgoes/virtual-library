@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -46,10 +48,38 @@ public class LivrariaVirtual extends JFrame {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new iMessage("Funcionando");
+				iMain main = new iMain();
+				
+				main.busca.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						new iMessage("NÃO IMPLEMENTADO AINDA");
+					}
+					
+				});
+				
+				main.pedidos.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						new iMessage("NÃO IMPLEMENTADO AINDA");
+					}
+					
+				});
+				
+				main.carrinho.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						new iMessage("NÃO IMPLEMENTADO AINDA");
+					}
+				});
+				
+				main.compra.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						new iMessage("NÃO IMPLEMENTADO AINDA");
+					}
+				});
 			}
 			
 		});
+		
+		
 	
 	}
 }
