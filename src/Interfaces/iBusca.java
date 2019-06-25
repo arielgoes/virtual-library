@@ -1,3 +1,4 @@
+package Interfaces;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -7,12 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class iBusca extends JFrame{
-	
-	JLabel label;
-	JTextField field;
-	JButton nome;
-	JButton autor;
-	JButton categoria;
+	private static final long serialVersionUID = 1L;
+
+	public JLabel label;
+	public JTextField field;
+	public JButton nome;
+	public JButton autor;
+	public JButton categoria;
 	
 	public iBusca() {
 		setTitle("Livraria Virtual - Busca");

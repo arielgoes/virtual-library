@@ -1,6 +1,9 @@
+package Entidades;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+
+import Controladoras.LivrariaVirtual;
 
 public class Cliente {
 	private String nome;

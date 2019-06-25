@@ -1,3 +1,5 @@
+package Interfaces;
+import Controladoras.SpringUtilities;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -7,25 +9,27 @@ import javax.swing.JPasswordField;
 import javax.swing.SpringLayout;
 
 public class iRegistro extends JFrame{
+	private static final long serialVersionUID = 1L;
 	
-	JLabel nameLabel;
-	JLabel idadeLabel;
-	JLabel cpfLabel;
-	JLabel emailLabel;
-	JLabel telefoneLabel;
-	JLabel usernameLabel;
-	JLabel passwordLabel;
 	
-	JTextField nameField;
-	JTextField idadeField;
-	JTextField cpfField;
-	JTextField emailField;
-	JTextField telefoneField;
-	JTextField usernameField;
-	JTextField passwordField;
+	public JLabel nameLabel;
+	public JLabel idadeLabel;
+	public JLabel cpfLabel;
+	public JLabel emailLabel;
+	public JLabel telefoneLabel;
+	public JLabel usernameLabel;
+	public JLabel passwordLabel;
 	
-	JButton OkButton;
-	JButton CancelButton;
+	public JTextField nameField;
+	public JTextField idadeField;
+	public JTextField cpfField;
+	public JTextField emailField;
+	public JTextField telefoneField;
+	public JTextField usernameField;
+	public JTextField passwordField;
+	
+	public JButton OkButton;
+	public JButton CancelButton;
 	
 	public iRegistro() {
 		setTitle("Livraria Virtual - Registro");

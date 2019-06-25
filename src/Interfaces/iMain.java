@@ -1,13 +1,14 @@
+package Interfaces;
 import java.awt.Component;
 import java.awt.Container;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
 public class iMain extends JFrame{
+	private static final long serialVersionUID = 1L;
 	
 	public JLabel label;
 	public JButton login;

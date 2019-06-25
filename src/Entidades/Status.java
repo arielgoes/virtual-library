@@ -1,3 +1,4 @@
+package Entidades;
 
 public enum Status {
 	AGUARDANDO_PAGAMENTO(0), PEDIDO_PAGO(1), PEDIDO_EM_SEPARACAO(2),

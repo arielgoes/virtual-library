@@ -1,16 +1,20 @@
+package Controladoras;
+import Interfaces.iMain;
+import Interfaces.iMessage;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class LivrariaVirtual extends JFrame {
-
 	private static final long serialVersionUID = 1L;
+	
+	
 	public static int numeroPedido = 0;
 	public static Controladora control;
 	

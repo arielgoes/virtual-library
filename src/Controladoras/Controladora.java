@@ -1,3 +1,19 @@
+package Controladoras;
+
+import Entidades.Editora;
+import Entidades.Cliente;
+import Entidades.Autor;
+import Entidades.Livro;
+import Entidades.Pedido;
+import Entidades.Endereco;
+import Entidades.Categoria;
+
+import Interfaces.iLogin;
+import Interfaces.iBusca;
+import Interfaces.iMessage;
+import Interfaces.iTable;
+import Interfaces.iRegistro;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;

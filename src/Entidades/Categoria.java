@@ -1,3 +1,4 @@
+package Entidades;
 
 public enum Categoria {
 	ADMINISTRACAO(0),

@@ -1,3 +1,4 @@
+package Interfaces;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -9,12 +10,12 @@ import javax.swing.JTextField;
 
 public class iLogin extends JFrame{
 	
-	JButton loginButton;
-	JButton registerButton;
-	JLabel usernameLabel;
-	JLabel passwordLabel;
-	JTextField usernameField;
-	JPasswordField passwordField;
+	public JButton loginButton;
+	public JButton registerButton;
+	public JLabel usernameLabel;
+	public JLabel passwordLabel;
+	public JTextField usernameField;
+	public JPasswordField passwordField;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -73,6 +74,7 @@ public class iLogin extends JFrame{
 		return usernameField.getText();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public String getPasswordField() {
 		return passwordField.getText();
 	}

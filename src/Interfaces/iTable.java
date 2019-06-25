@@ -1,4 +1,5 @@
-import java.awt.BorderLayout;
+package Interfaces;
+import Entidades.Livro;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -9,13 +10,13 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SpringLayout;
 
 public class iTable extends JFrame{
-
+	private static final long serialVersionUID = 1L;
+	
 	JTable table;
 	JButton maisInfo;
 	JButton addCarrinho;
