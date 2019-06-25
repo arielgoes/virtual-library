@@ -282,7 +282,7 @@ public class Controladora {
 				
 				busca.nome.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						buscados = buscar(busca.field.getText(), 1);
+						buscados = buscarTitulo(busca.field.getText());
 						new iTable(buscados);
 					}
 					
@@ -290,7 +290,7 @@ public class Controladora {
 				
 				busca.autor.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						buscados = buscar(busca.field.getText(), 2);
+						buscados = buscarAutor(busca.field.getText());
 						new iTable(buscados);
 					}
 					
@@ -298,7 +298,7 @@ public class Controladora {
 				
 				busca.categoria.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						buscados = buscar(busca.field.getText(), 2);
+						buscados = buscarCategoria(busca.field.getText());
 						new iTable(buscados);
 					}
 					
@@ -309,36 +309,44 @@ public class Controladora {
 		});
 	}
 	
-	public ArrayList<Livro> buscar(String strBusca, int tipoBusca){
+	public ArrayList<Livro> buscarTitulo(String strBusca){
 		ArrayList<Livro> buscados = new ArrayList<Livro>();
-		switch(tipoBusca) {
-		//nome do livro
-		case 1:
-			for(Livro l: livros) {
-				if(l.getTitulo().contains(strBusca)) {
-					buscados.add(l);
-				}
+		for(Livro l: livros) {
+			if(l.getTitulo().contains(strBusca)) {
+				buscados.add(l);
 			}
-			break;
-		//nome do autor
-		case 2:
-			for(Livro l: livros) {
-				for(Autor a: l.getAutores()) {
-					if(a.getnomeAutor().contains(strBusca)) {
-						buscados.add(l);
-					}
-				}
-			}
-			break;
-		//categoria
-		case 3:
-			for(Livro l: livros) {
-				if(l.showCategoriaName().contains(strBusca)) {
-					buscados.add(l);
-				}
-			}
-			break;
 		}
 		return buscados;
+	}
+	
+	public ArrayList<Livro> buscarAutor(String strBusca){
+		ArrayList<Livro> buscados = new ArrayList<Livro>();
+		for(Livro l: livros) {
+			for(int i = 0; i < l.getAutores().size(); i++) {
+				if(l.getAutores().get(i).getnomeAutor().contains(strBusca)) {
+					buscados.add(l);
+				}
+			}
+		}
+		return buscados;
+	}
+	
+	public ArrayList<Livro> buscarCategoria(String strBusca){
+		ArrayList<Livro> buscados = new ArrayList<Livro>();
+		for(Livro l: livros) {
+			if(l.showCategoriaName().contains(strBusca)) {
+				buscados.add(l);
+			}
+		}
+		return buscados;
+	}
+	
+	public void showLivros() {
+		for(Livro l: livros) {
+			System.out.println("Título: " + l.getTitulo());
+			System.out.print("Autor: ");
+			System.out.print("\n");
+			System.out.println("Categoria: " + l.showCategoriaName());
+		}
 	}
 }

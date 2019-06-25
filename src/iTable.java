@@ -52,7 +52,7 @@ public class iTable extends JFrame{
 		Container content = getContentPane();
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
-		Dimension d = new Dimension(400, 100);
+		Dimension d = new Dimension(450, 100);
 		JScrollPane sp = new JScrollPane(table);
 		sp.setPreferredSize(d);
 		add(sp);
