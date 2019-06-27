@@ -11,7 +11,6 @@ import javax.swing.SpringLayout;
 public class iRegistro extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
-	
 	public JLabel nameLabel;
 	public JLabel idadeLabel;
 	public JLabel cpfLabel;

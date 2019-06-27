@@ -30,21 +30,23 @@ public class iTable extends JFrame{
 		setLocationRelativeTo(null);
 		
 		List<List<String>> data = new ArrayList<List<String>>();
-		String[] colunas = {"ISBN", "Título", "Cacteogria", "Preço"};
+		String[] colunas = {"ISBN", "Título", "Autor", "Cacteogria", "Preço"};
 		
 		for(Livro l: livros) {
 			List<String> row = new ArrayList<String>();
 			row.add(l.getIsbn());
 			row.add(l.getTitulo());
+			row.add(l.getAutores().get(0).getnomeAutor());
 			row.add(l.showCategoriaName());
 			row.add("" + l.getPreco());
 			data.add(row);
 		}
 		
-		String[][] dados = toMatrix(data, livros.size());
+		String[][] dados = toMatrix(data, livros.size(), colunas.length);
 		
 		table = new JTable(dados, colunas);
-		table.setBounds(30, 40, 200, 300); 
+		
+		//table.setBounds(30, 40, 200, 300);
 		
 		cancel = new JButton("Cancelar");
 		maisInfo = new JButton("Mais Info");
@@ -74,7 +76,6 @@ public class iTable extends JFrame{
 
 		layout.putConstraint(SpringLayout.WEST, (Component)addCarrinho, 25, SpringLayout.EAST, maisInfo);
 		layout.putConstraint(SpringLayout.NORTH, (Component)addCarrinho, 25, SpringLayout.SOUTH, sp);
-	
 		
 		cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -82,14 +83,27 @@ public class iTable extends JFrame{
 			}
 		});
 		
+		maisInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int row = table.getSelectedRow();
+				String isbn = (String) table.getValueAt(row, 0);
+				for(Livro l: livros) {
+					if(l.getIsbn().equals(isbn)) {
+						new iMaisInfo(l);
+					}
+				}
+			}
+			
+		});
+		
 		
 	}
 	
-	public String[][] toMatrix(List<List<String>> data, int rows){
-		String[][] dados = new String[rows][4];
+	public String[][] toMatrix(List<List<String>> data, int rows, int columns){
+		String[][] dados = new String[rows][5];
 		
 		for(int i = 0; i < rows; i++) {
-			for(int j = 0; j < 4; j++) {
+			for(int j = 0; j < columns; j++) {
 				dados[i][j] = data.get(i).get(j);
 			}
 		}
@@ -100,6 +114,10 @@ public class iTable extends JFrame{
 	public void  cancelBtn() {
 		this.setVisible(false);
 		this.dispose();
+	}
+	
+	public void maisInfoBtn(Livro l) {
+		new iMaisInfo(l);
 	}
 	
 }

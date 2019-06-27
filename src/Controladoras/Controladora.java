@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Scanner;
-
 import javax.swing.SwingUtilities;
 
 public class Controladora {
@@ -339,7 +338,7 @@ public class Controladora {
 		ArrayList<Livro> buscados = new ArrayList<Livro>();
 		for(Livro l: livros) {
 			for(int i = 0; i < l.getAutores().size(); i++) {
-				if(l.getAutores().get(i).getnomeAutor().contains(strBusca)) {
+				if(l.getAutores().get(i).getnomeAutor().contains(strBusca.toUpperCase())) {
 					buscados.add(l);
 				}
 			}
@@ -350,19 +349,11 @@ public class Controladora {
 	public ArrayList<Livro> buscarCategoria(String strBusca){
 		ArrayList<Livro> buscados = new ArrayList<Livro>();
 		for(Livro l: livros) {
-			if(l.showCategoriaName().contains(strBusca)) {
+			if(l.showCategoriaName().contains(strBusca.toUpperCase())) {
 				buscados.add(l);
 			}
 		}
 		return buscados;
 	}
 	
-	public void showLivros() {
-		for(Livro l: livros) {
-			System.out.println("Título: " + l.getTitulo());
-			System.out.print("Autor: ");
-			System.out.print("\n");
-			System.out.println("Categoria: " + l.showCategoriaName());
-		}
-	}
 }

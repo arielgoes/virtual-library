@@ -46,8 +46,6 @@ public class LivrariaVirtual extends JFrame {
 		
 		control.addLivrosToAutores();
 		
-		control.showLivros();
-		
 		SwingUtilities.invokeLater(new Runnable() {
 	
 			public void run() {
