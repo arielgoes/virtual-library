@@ -85,12 +85,16 @@ public class iTable extends JFrame{
 		
 		maisInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int row = table.getSelectedRow();
-				String isbn = (String) table.getValueAt(row, 0);
-				for(Livro l: livros) {
-					if(l.getIsbn().equals(isbn)) {
-						new iMaisInfo(l);
+				try {
+					int row = table.getSelectedRow();
+					String isbn = (String) table.getValueAt(row, 0);
+					for(Livro l: livros) {
+						if(l.getIsbn().equals(isbn)) {
+							new iMaisInfo(l);
+						}
 					}
+				}catch(ArrayIndexOutOfBoundsException exception) {
+					new iMessage("Nenhum livro selecionado! Primeiro selecione o livro.");
 				}
 			}
 			

@@ -33,6 +33,7 @@ public class iMaisInfo extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(300, 600);
 		setVisible(true);
+		setLocationRelativeTo(null);
 		
 		isbn = new JLabel("ISBN: " + l.getIsbn());
 		titulo = new JLabel("Título: " + l.getTitulo());
