@@ -1,6 +1,8 @@
 package Interfaces;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,6 +17,7 @@ public class iBusca extends JFrame{
 	public JButton nome;
 	public JButton autor;
 	public JButton categoria;
+	public JButton cancel;
 	
 	public iBusca() {
 		setTitle("Livraria Virtual - Busca");
@@ -28,6 +31,7 @@ public class iBusca extends JFrame{
 		nome = new JButton("Buscar Por Nome");
 		autor = new JButton("Buscar Por Autor");
 		categoria = new JButton("Buscar Por Categoria");
+		cancel = new JButton("Cancelar");
 		
 		setLayout(new GridBagLayout());
 		
@@ -39,6 +43,11 @@ public class iBusca extends JFrame{
 		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
 		add(label, gc);
+		
+		gc.gridx = 0;
+		gc.gridy = 2;
+		gc.fill = GridBagConstraints.NONE;
+		add(cancel, gc);
 		
 		gc.gridx = 1;
 		gc.gridy = 1;
@@ -59,5 +68,18 @@ public class iBusca extends JFrame{
 		gc.gridy = 2;
 		gc.fill = GridBagConstraints.NONE;
 		add(categoria, gc);
+		
+		
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cancelBtn();
+			}
+			
+		});
+	}
+	
+	public void cancelBtn() {
+		setVisible(false);
+		dispose();
 	}
 }
