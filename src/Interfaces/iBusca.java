@@ -1,4 +1,5 @@
 package Interfaces;
+import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -8,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
 public class iBusca extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -33,41 +35,9 @@ public class iBusca extends JFrame{
 		categoria = new JButton("Buscar Por Categoria");
 		cancel = new JButton("Cancelar");
 		
-		setLayout(new GridBagLayout());
-		
-		GridBagConstraints gc = new GridBagConstraints();
-		
-		gc.gridx = 0;
-		gc.gridy = 1;
-		gc.weightx = 1;
-		gc.weighty = 1;
-		gc.fill = GridBagConstraints.NONE;
-		add(label, gc);
-		
-		gc.gridx = 0;
-		gc.gridy = 2;
-		gc.fill = GridBagConstraints.NONE;
-		add(cancel, gc);
-		
-		gc.gridx = 1;
-		gc.gridy = 1;
-		gc.fill = GridBagConstraints.HORIZONTAL;
-		add(field, gc);
-		
-		gc.gridx = 2;
-		gc.gridy = 0;
-		gc.fill = GridBagConstraints.NONE;
-		add(nome, gc);
-		
-		gc.gridx = 2;
-		gc.gridy = 1;
-		gc.fill = GridBagConstraints.NONE;
-		add(autor, gc);
-		
-		gc.gridx = 2;
-		gc.gridy = 2;
-		gc.fill = GridBagConstraints.NONE;
-		add(categoria, gc);
+		Container content = getContentPane();
+		SpringLayout layout = new SpringLayout();
+		setLayout(layout);
 		
 		
 		cancel.addActionListener(new ActionListener() {

@@ -9,18 +9,17 @@ public class Pedido {
 	private double valor;
 	private Status status; //Classe 'Status'
 	private Cliente cliente; //Classe 'Cliente'
-	private ArrayList<Livro> livros;
+	private ArrayList<LivroPedido> livros;
+	@SuppressWarnings("unused")
+	private boolean finalizado;
 
 	
 	
-	Pedido(int numeroPedido, Endereco enderecoEntrega, Date dataPedido, double valor, Status status, Cliente cliente){
+	Pedido(int numeroPedido, Cliente cliente){
 		this.numeroPedido = numeroPedido;
-		this.enderecoEntrega = enderecoEntrega;
-		this.dataPedido = dataPedido;
-		this.valor = valor;
-		this.livros = new ArrayList<Livro>();
-		this.status = status;
+		this.livros = new ArrayList<LivroPedido>();
 		this.cliente = cliente;
+		this.finalizado = false;
 	}
 	
 	
@@ -57,14 +56,21 @@ public class Pedido {
 	
 	
 	//funçoes
-	void addLivroPedido(Livro livro) {
+	public void addLivroPedido(LivroPedido livro) {
 		this.livros.add(livro);
 	}
 	
+	public void finalizarPedido(Endereco endereco) {
+		this.dataPedido = new Date(System.currentTimeMillis());
+		this.enderecoEntrega = endereco;
+		this.finalizado = true;
+		this.status = Status.AGUARDANDO_PAGAMENTO;
+	}
 	
-	boolean delLivroPedido(String nomeLivro) {
-		for(Livro l: livros) {
-			if(l.getTitulo().equals(nomeLivro)) {
+	
+	public boolean delLivroPedido(String nomeLivro) {
+		for(LivroPedido l: livros) {
+			if(l.getLivro().getTitulo().equals(nomeLivro)) {
 				System.out.println("O livro " + nomeLivro + "foi excluído!");
 				livros.remove(l);
 				return true;
@@ -75,8 +81,18 @@ public class Pedido {
 		return false;
 	}
 	
-	int printStatusInteger() {
+	public int printStatusInteger() {
 		return this.status.status;
+	}
+	
+	public void atualizaValor() {
+		double atual = 0.0;
+		
+		for(LivroPedido l: livros) {
+			atual += l.getValorTotal();
+		}
+		
+		this.valor = atual;
 	}
 	
 }

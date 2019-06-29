@@ -1,6 +1,5 @@
 package Entidades;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 import Controladoras.LivrariaVirtual;
@@ -15,7 +14,6 @@ public class Cliente {
 	private String password;
 	private ArrayList<Endereco> enderecos;
 	private ArrayList<Pedido> pedidos;
-	private Carrinho carrinho;
 	
 	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone, String username, String password) {
 		this.nome = nome;
@@ -23,13 +21,11 @@ public class Cliente {
 		this.cpf = cpf;
 		this.email = email;
 		this.numeroTelefone = numeroTelefone;
-		this.carrinho = new Carrinho();
 		this.username = username;
 		this.password = password;
-		
 		this.enderecos = new ArrayList<Endereco>();
 		this.pedidos = new ArrayList<Pedido>();
-		this.carrinho = new Carrinho();
+		this.pedidos.add(new Pedido(LivrariaVirtual.numeroPedido++, this));
 	}
 	
 	
@@ -129,41 +125,7 @@ public class Cliente {
 		return true;
 	}
 	
-	public void addPedido() {
-		Scanner in = new Scanner(System.in);
-		Endereco endereco;
-		if(this.pedidos.size() == 1) {
-			System.out.println("Deseja utilzar este endereço para entrega?\n 1- Sim\n2- Não");
-			this.enderecos.get(0).showEndereco();
-			int choice = in.nextInt();
-			in.hasNextLine();
-			if(choice == 1) {
-				endereco = this.enderecos.get(0);
-			}else {
-				endereco = this.newEndereco();
-			}
-		}
-		else {
-			int id = 0;
-			System.out.println("Digite o ID do endereço escolhido:");
-			for(Endereco e: enderecos) {
-				System.out.print("ID : " + id + ".");
-				e.showEndereco();
-				id++;
-				System.out.println();
-			}
-			int choice = in.nextInt();
-			in.nextLine();
-			endereco = enderecos.get(choice);
-		}
-		Date data = new Date(System.currentTimeMillis());
-		Status status = Status.AGUARDANDO_PAGAMENTO;
-		Pedido p = new Pedido(++LivrariaVirtual.numeroPedido, endereco, data, this.carrinho.getValorTotal(), status, this);
-		this.carrinho.resetCarrinho();
-		this.pedidos.add(p);
-		LivrariaVirtual.control.pedidos.add(p);
-		in.close();
-	}
+	
 	
 	public Endereco newEndereco() {
 		Scanner in = new Scanner(System.in);
