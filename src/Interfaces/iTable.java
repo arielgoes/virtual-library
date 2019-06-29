@@ -45,7 +45,7 @@ public class iTable extends JFrame{
 			row.add(l.getIsbn());
 			row.add(l.getTitulo());
 			row.add(l.getAutores().get(0).getnomeAutor());
-			row.add(l.showCategoriaName());
+			row.add(l.getCategoria());
 			row.add("" + l.getPreco());
 			data.add(row);
 		}
