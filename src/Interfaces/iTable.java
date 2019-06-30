@@ -10,20 +10,13 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 public class iTable extends JFrame{
 	private static final long serialVersionUID = 1L;
-	
-	public JLabel label;
-	public JTextField field;
-	public JButton nome;
-	public JButton autor;
-	public JButton categoria;
+
 	
 	JTable table;
 	JButton maisInfo;
@@ -33,7 +26,7 @@ public class iTable extends JFrame{
 	public iTable(ArrayList<Livro> livros) {
 		setSize(500, 275);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Livraria Virtual - Resultados da Busca");
 		setLocationRelativeTo(null);
 		
@@ -51,12 +44,6 @@ public class iTable extends JFrame{
 		}
 		
 		String[][] dados = toMatrix(data, livros.size(), colunas.length);
-		
-		label = new JLabel("Parâmetro da Busca: ");
-		field = new JTextField();
-		nome = new JButton("Buscar Por Nome");
-		autor = new JButton("Buscar Por Autor");
-		categoria = new JButton("Buscar Por Categoria");
 		table = new JTable(dados, colunas);
 		cancel = new JButton("Cancelar");
 		maisInfo = new JButton("Mais Info");

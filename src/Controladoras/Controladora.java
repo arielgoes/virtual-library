@@ -53,12 +53,12 @@ public class Controladora {
 	
 	public void loadEditoras() throws FileNotFoundException{
 		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
-		String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
-		//String pathEditoras = "/home/lopesvictor/git/livraria-virtual/scriptsPython/editoras.txt";
+		//String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
+		String pathEditoras = "/home/lopesvictor/git/livraria-virtual/scriptsPython/editoras.txt";
 		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
 		
-		String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
-		//String pathEnderecos = "/home/lopesvictor/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
+		//String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
+		String pathEnderecos = "/home/lopesvictor/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
 		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
 		
 		
@@ -108,8 +108,8 @@ public class Controladora {
 	
 	
 	public void loadAutores() throws FileNotFoundException, ParseException{
-		String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
-		//String pathAutores = "/home/lopesvictor/git/livraria-virtual/scriptsPython/autores.txt";
+		//String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
+		String pathAutores = "/home/lopesvictor/git/livraria-virtual/scriptsPython/autores.txt";
 		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
 		
 		try {
@@ -143,8 +143,8 @@ public class Controladora {
 	
 	
 	public void loadLivros() throws FileNotFoundException, ParseException {
-		String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
-		//String pathLivros = "/home/lopesvictor/git/livraria-virtual/scriptsPython/livros.txt"; 
+		//String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
+		String pathLivros = "/home/lopesvictor/git/livraria-virtual/scriptsPython/livros.txt"; 
 		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
 		
 		try {
@@ -284,25 +284,18 @@ public class Controladora {
 			public void run() {
 				iBusca busca = new iBusca();
 				
-				busca.nome.addActionListener(new ActionListener() {
+				busca.busca.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						buscados = buscarTitulo(busca.field.getText());
-						new iTable(buscados);
-					}
-					
-				});
-				
-				busca.autor.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						buscados = buscarAutor(busca.field.getText());
-						new iTable(buscados);
-					}
-					
-				});
-				
-				busca.categoria.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						buscados = buscarCategoria(busca.field.getText());
+						if(busca.cbox.getSelectedItem().equals("Título")) {
+							buscados = buscarTitulo(busca.field.getText());
+						}
+						else if(busca.cbox.getSelectedItem().equals("Autor")){
+							buscados = buscarAutor(busca.field.getText());
+						}else if(busca.cbox.getSelectedItem().equals("Categoria")) {
+							buscados = buscarCategoria(busca.field.getText());
+						}else {
+							buscados = buscarEditora(busca.field.getText());
+						}
 						new iTable(buscados);
 					}
 					
@@ -339,6 +332,16 @@ public class Controladora {
 		ArrayList<Livro> buscados = new ArrayList<Livro>();
 		for(Livro l: livros) {
 			if(l.getCategoria().contains(strBusca.toUpperCase())) {
+				buscados.add(l);
+			}
+		}
+		return buscados;
+	}
+	
+	public ArrayList<Livro> buscarEditora(String strBusca){
+		ArrayList<Livro> buscados = new ArrayList<Livro>();
+		for(Livro l: livros) {
+			if(l.getEditora().getNome().contains(strBusca.toUpperCase())) {
 				buscados.add(l);
 			}
 		}
