@@ -33,7 +33,7 @@ public class iRegistro extends JFrame{
 	public iRegistro() {
 		setTitle("Livraria Virtual - Registro");
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(500, 300);
 		setLocationRelativeTo(null);
 		

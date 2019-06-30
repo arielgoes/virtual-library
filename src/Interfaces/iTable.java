@@ -31,7 +31,7 @@ public class iTable extends JFrame{
 	JButton cancel;
 	
 	public iTable(ArrayList<Livro> livros) {
-		setSize(500, 250);
+		setSize(500, 275);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Livraria Virtual - Resultados da Busca");
@@ -66,15 +66,17 @@ public class iTable extends JFrame{
 		Container content = getContentPane();
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
-		Dimension d = new Dimension(450, 100);
+		Dimension d = new Dimension(450, 150);
 		JScrollPane sp = new JScrollPane(table);
 		sp.setPreferredSize(d);
 		add(sp);
 		
-		sp.setSize(100, 50);
 		add(cancel);
 		add(maisInfo);
 		add(addCarrinho);
+		
+		layout.putConstraint(SpringLayout.WEST, (Component)sp, 25, SpringLayout.WEST, content);
+		layout.putConstraint(SpringLayout.NORTH, (Component)sp, 25, SpringLayout.SOUTH, addCarrinho);
 		
 		layout.putConstraint(SpringLayout.WEST, (Component)sp, 25, SpringLayout.WEST, content);
 		layout.putConstraint(SpringLayout.NORTH, (Component)sp, 25, SpringLayout.NORTH, content);

@@ -23,7 +23,7 @@ public class iLogin extends JFrame{
 		setTitle("Livraria Virtual - Login");
 		setVisible(true);
 		setSize(500, 200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
 		loginButton = new JButton("Login");

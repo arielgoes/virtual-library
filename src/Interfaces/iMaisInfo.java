@@ -30,7 +30,7 @@ public class iMaisInfo extends JFrame {
 	
 	public iMaisInfo(Livro l) {
 		setTitle("Livraria Virtual - Informações de " + l.getTitulo());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(300, 600);
 		setVisible(true);
 		setLocationRelativeTo(null);
