@@ -37,7 +37,7 @@ public class iMaisInfo extends JFrame {
 		
 		isbn = new JLabel("ISBN: " + l.getIsbn());
 		titulo = new JLabel("Título: " + l.getTitulo());
-		categoria = new JLabel("Categoria: " + l.getCategoria().name());
+		categoria = new JLabel("Categoria: " + l.getCategoria());
 		autores = new JLabel("Autores: " + l.getAutores().get(0).getnomeAutor());
 		editora = new JLabel("Editora: " + l.getEditora().getNome());
 		preco = new JLabel("Preço: " + l.getPreco());

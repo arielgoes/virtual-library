@@ -120,8 +120,8 @@ public class Livro {
 	}
 	
 	
-	public Categoria getCategoria() {
-		return this.categoria;
+	public String getCategoria() {
+		return this.categoria.getCategoria();
 	}
 	
 	
@@ -181,16 +181,6 @@ public class Livro {
 		System.out.println("Titulo: " + this.titulo);
 		System.out.println("Material: " + this.material);
 		System.out.println("Preco: " + this.preco);
-		System.out.println("Categoria: " + this.showCategoriaName());
+		System.out.println("Categoria: " + this.categoria.getCategoria());
 	}
-	
-	
-	public int showCategoriaInteger() {
-		return this.categoria.categoria;
-	}
-	
-	public String showCategoriaName() {
-		return this.categoria.name();
-	}
-	
 }
