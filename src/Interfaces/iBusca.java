@@ -23,7 +23,7 @@ public class iBusca extends JFrame{
 	
 	public iBusca() {
 		setTitle("Livraria Virtual - Busca");
-		setSize(600, 410);
+		setSize(600, 210);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		setLocationRelativeTo(null);

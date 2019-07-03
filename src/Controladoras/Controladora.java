@@ -20,6 +20,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,13 +55,26 @@ public class Controladora {
 	
 	public void loadEditoras() throws FileNotFoundException{
 		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
-		//String pathEditoras = "/home/ariel/git/livraria-virtual/scriptsPython/editoras.txt";
-		String pathEditoras = "/home/lopesvictor/git/livraria-virtual/scriptsPython/editoras.txt";
-		BufferedReader br = new BufferedReader(new FileReader(pathEditoras));
+		String pathEditoras = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/editoras.txt";
+		String DpathEditoras = null;
+		try {
+			DpathEditoras = URLDecoder.decode(pathEditoras, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			new iMessage("Erro!");
+			e1.printStackTrace();
+		}
+		BufferedReader br = new BufferedReader(new FileReader(DpathEditoras));
 		
-		//String pathEnderecos = "/home/ariel/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
-		String pathEnderecos = "/home/lopesvictor/git/livraria-virtual/scriptsPython/enderecosEditoras.txt";
-		BufferedReader br2 = new BufferedReader(new FileReader(pathEnderecos));
+		
+		String pathEnderecos = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/enderecosEditoras.txt";
+		String DpathEnderecos = null;
+		try {
+			DpathEnderecos = URLDecoder.decode(pathEnderecos, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			new iMessage("Erro!");
+			e1.printStackTrace();
+		}
+		BufferedReader br2 = new BufferedReader(new FileReader(DpathEnderecos));
 		
 		
 		try {
@@ -108,9 +123,15 @@ public class Controladora {
 	
 	
 	public void loadAutores() throws FileNotFoundException, ParseException{
-		//String pathAutores = "/home/ariel/git/livraria-virtual/scriptsPython/autores.txt";
-		String pathAutores = "/home/lopesvictor/git/livraria-virtual/scriptsPython/autores.txt";
-		BufferedReader br = new BufferedReader(new FileReader(pathAutores));
+		String pathAutores = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/autores.txt";
+		String DpathAutores = null;
+		try {
+			DpathAutores = URLDecoder.decode(pathAutores, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			new iMessage("Erro!");
+			e1.printStackTrace();
+		}
+		BufferedReader br = new BufferedReader(new FileReader(DpathAutores));
 		
 		try {
 			String st;
@@ -143,9 +164,16 @@ public class Controladora {
 	
 	
 	public void loadLivros() throws FileNotFoundException, ParseException {
-		//String pathLivros = "/home/ariel/git/livraria-virtual/scriptsPython/livros.txt"; 
-		String pathLivros = "/home/lopesvictor/git/livraria-virtual/scriptsPython/livros.txt"; 
-		BufferedReader br = new BufferedReader(new FileReader(pathLivros));
+		String pathLivros = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/livros.txt";
+		String DpathLivros = null;
+		try {
+			DpathLivros = URLDecoder.decode(pathLivros, "UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			new iMessage("Erro!");
+			e1.printStackTrace();
+		}
+		
+		BufferedReader br = new BufferedReader(new FileReader(DpathLivros));
 		
 		try {
 			String st;
