@@ -55,7 +55,7 @@ public class Controladora {
 	
 	public void loadEditoras() throws FileNotFoundException{
 		ArrayList<Endereco> enderecoEditora = new ArrayList<Endereco>();
-		String pathEditoras = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/editoras.txt";
+		String pathEditoras = ClassLoader.getSystemClassLoader().getResource(".").getPath() + "/Paths/editoras.txt";
 		String DpathEditoras = null;
 		try {
 			DpathEditoras = URLDecoder.decode(pathEditoras, "UTF-8");
@@ -66,7 +66,7 @@ public class Controladora {
 		BufferedReader br = new BufferedReader(new FileReader(DpathEditoras));
 		
 		
-		String pathEnderecos = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/enderecosEditoras.txt";
+		String pathEnderecos = ClassLoader.getSystemClassLoader().getResource(".").getPath() + "/Paths/enderecosEditoras.txt";
 		String DpathEnderecos = null;
 		try {
 			DpathEnderecos = URLDecoder.decode(pathEnderecos, "UTF-8");
@@ -123,7 +123,7 @@ public class Controladora {
 	
 	
 	public void loadAutores() throws FileNotFoundException, ParseException{
-		String pathAutores = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/autores.txt";
+		String pathAutores = ClassLoader.getSystemClassLoader().getResource(".").getPath() + "/Paths/autores.txt";
 		String DpathAutores = null;
 		try {
 			DpathAutores = URLDecoder.decode(pathAutores, "UTF-8");
@@ -164,7 +164,7 @@ public class Controladora {
 	
 	
 	public void loadLivros() throws FileNotFoundException, ParseException {
-		String pathLivros = Controladora.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/Paths/livros.txt";
+		String pathLivros = ClassLoader.getSystemClassLoader().getResource(".").getPath() + "/Paths/livros.txt";
 		String DpathLivros = null;
 		try {
 			DpathLivros = URLDecoder.decode(pathLivros, "UTF-8");
