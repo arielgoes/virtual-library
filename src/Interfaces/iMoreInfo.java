@@ -15,7 +15,7 @@ import javax.swing.SpringLayout;
 
 import Entidades.Livro;
 
-public class iMaisInfo extends JFrame {
+public class iMoreInfo extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public JLabel isbn;
@@ -28,7 +28,7 @@ public class iMaisInfo extends JFrame {
 	public JTextArea resumo;
 	public JButton voltar;
 	
-	public iMaisInfo(Livro l) {
+	public iMoreInfo(Livro l) {
 		setTitle("Livraria Virtual - Informações de " + l.getTitulo());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(300, 600);

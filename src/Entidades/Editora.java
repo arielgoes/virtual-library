@@ -2,12 +2,12 @@ package Entidades;
 
 public class Editora {
 	private String nome;
-	private Endereco endereco;
+	private String endereco;
 	private String telefone;
 	private String cnpj;
 	
 	
-	public Editora(String nome, Endereco endereco, String telefone, String cnpj){
+	public Editora(String nome, String endereco, String telefone, String cnpj){
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
@@ -18,7 +18,7 @@ public class Editora {
 		this.nome = nome;
 	}
 	
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	
@@ -34,7 +34,7 @@ public class Editora {
 		return this.nome;
 	}
 	
-	public Endereco getEndereco() {
+	public String getEndereco() {
 		return this.endereco;
 	}
 	

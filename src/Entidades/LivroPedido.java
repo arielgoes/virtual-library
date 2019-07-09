@@ -1,38 +1,22 @@
 package Entidades;
 
+import java.util.ArrayList;
+
 public class LivroPedido {
-	private Livro livro;
-	private int quant;
-	private double valorTotal;
+	private ArrayList<Livro> livros;
 	
-	public LivroPedido(Livro livro, int quant) {
-		this.livro = livro;
-		this.quant = quant;
-		this.valorTotal = livro.getPreco() * quant;
+	public LivroPedido() {
+		this.livros = new ArrayList<Livro>();
 	}
 
-	public Livro getLivro() {
-		return livro;
+	public void addLivro(Livro livro, int quant) {
+		for (int i = 0; i < quant; i++) {
+			livros.add(livro);
+		}
 	}
-
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
-
-	public int getQuant() {
-		return quant;
-	}
-
-	public void setQuant(int quant) {
-		this.quant = quant;
-	}
-
-	public double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
+	
+	public ArrayList<Livro> getLivros() {
+		return this.livros;
 	}
 	
 	

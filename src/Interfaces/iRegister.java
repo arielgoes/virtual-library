@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.SpringLayout;
 
-public class iRegistro extends JFrame{
+public class iRegister extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	public JLabel nameLabel;
@@ -30,7 +30,7 @@ public class iRegistro extends JFrame{
 	public JButton OkButton;
 	public JButton CancelButton;
 	
-	public iRegistro() {
+	public iRegister() {
 		setTitle("Livraria Virtual - Registro");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

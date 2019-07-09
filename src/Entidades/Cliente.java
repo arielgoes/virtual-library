@@ -2,7 +2,7 @@ package Entidades;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Controladoras.LivrariaVirtual;
+import Controladoras.MainControl;
 
 public class Cliente {
 	private String nome;
@@ -12,7 +12,7 @@ public class Cliente {
 	private String email;
 	private String username;
 	private String password;
-	private ArrayList<Endereco> enderecos;
+	private ArrayList<String> enderecos;
 	private ArrayList<Pedido> pedidos;
 	
 	public Cliente(String nome, String idade, String cpf, String email, String numeroTelefone, String username, String password) {
@@ -23,9 +23,9 @@ public class Cliente {
 		this.numeroTelefone = numeroTelefone;
 		this.username = username;
 		this.password = password;
-		this.enderecos = new ArrayList<Endereco>();
+		this.enderecos = new ArrayList<String>();
 		this.pedidos = new ArrayList<Pedido>();
-		this.pedidos.add(new Pedido(LivrariaVirtual.numeroPedido++, this));
+		this.pedidos.add(new Pedido(MainControl.numeroPedido++, this));
 	}
 	
 	
@@ -89,7 +89,7 @@ public class Cliente {
 	}
 	
 	//funcoes
-	public void addEndereco(Endereco endereco) {
+	public void addEndereco(String endereco) {
 		enderecos.add(endereco);
 	}
 	
@@ -100,10 +100,8 @@ public class Cliente {
 		while(executed == false) {
 			int id = 0;
 			System.out.println("Exibindo endereços cadastrados...");
-			for(Endereco e: enderecos) {
-				System.out.println("ID " + id + ": ");
-				e.showEndereco();
-				System.out.println("\n");
+			for(String e: enderecos) {
+				System.out.println("ID " + id + ": " + e);
 			}
 			System.out.println("Digite o ID do endereco a ser removido: ");
 			System.out.println("Caso deseje sair, digite -1");
@@ -125,9 +123,7 @@ public class Cliente {
 		return true;
 	}
 	
-	
-	
-	public Endereco newEndereco() {
+	public String newEndereco() {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Digite a rua:");
 		String rua = in.nextLine();
@@ -145,10 +141,14 @@ public class Cliente {
 		String estado = in.nextLine();
 		System.out.println("Digite o país:");
 		String pais = in.nextLine();
-		Endereco e = new Endereco(rua, numero, complemento, bairro, cidade, cep, estado, pais);
+		String e = rua + ", " + numero + ", " + complemento + ", " + bairro + ", " + cidade + ", " + cep + ", " + estado + ", " + pais;
 		this.addEndereco(e);
 		in.close();
 		return e;
+	}
+	
+	public Pedido getCarrinho() {
+		return pedidos.get(pedidos.size() - 1);
 	}
 	
 }

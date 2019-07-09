@@ -1,25 +1,22 @@
 package Entidades;
 import java.util.Date;
-import java.util.ArrayList;
 
 public class Pedido {
 	private int numeroPedido;
-	private Endereco enderecoEntrega; //Classe 'Endereco'
+	private String enderecoEntrega; //Classe 'Endereco'
 	private Date dataPedido;
 	private double valor;
 	private Status status; //Classe 'Status'
 	private Cliente cliente; //Classe 'Cliente'
-	private ArrayList<LivroPedido> livros;
+	private LivroPedido livros;
 	@SuppressWarnings("unused")
 	private boolean finalizado;
 
-	
-	
 	Pedido(int numeroPedido, Cliente cliente){
 		this.numeroPedido = numeroPedido;
-		this.livros = new ArrayList<LivroPedido>();
 		this.cliente = cliente;
 		this.finalizado = false;
+		this.livros = new LivroPedido();
 	}
 	
 	
@@ -34,7 +31,7 @@ public class Pedido {
 		return this.numeroPedido;
 	}
 	
-	Endereco getEnderecoEntrega() {
+	String getEnderecoEntrega() {
 		return this.enderecoEntrega;
 	}
 	
@@ -46,21 +43,22 @@ public class Pedido {
 		return this.valor;
 	}
 	
-	Status getStatus() { //retorna o valor referente ao inteiro. Exemplo: SEGUNDA(1), Se '1', retorna 'SEGUNDA';
+	public Status getStatus() { //retorna o valor referente ao inteiro. Exemplo: SEGUNDA(1), Se '1', retorna 'SEGUNDA';
 		return this.status;
 	}
 	
-	Cliente getCliente() {
+	public Cliente getCliente() {
 		return this.cliente;
+	}
+	
+	public LivroPedido getLivroPedido() {
+		return this.livros;
 	}
 	
 	
 	//funçoes
-	public void addLivroPedido(LivroPedido livro) {
-		this.livros.add(livro);
-	}
 	
-	public void finalizarPedido(Endereco endereco) {
+	public void finalizarPedido(String endereco) {
 		this.dataPedido = new Date(System.currentTimeMillis());
 		this.enderecoEntrega = endereco;
 		this.finalizado = true;
@@ -68,31 +66,17 @@ public class Pedido {
 	}
 	
 	
-	public boolean delLivroPedido(String nomeLivro) {
-		for(LivroPedido l: livros) {
-			if(l.getLivro().getTitulo().equals(nomeLivro)) {
-				System.out.println("O livro " + nomeLivro + "foi excluído!");
-				livros.remove(l);
-				return true;
-			}
-		}
-		
-		System.out.println("O livro não foi encontrado e não pode ser removido!");
-		return false;
-	}
-	
 	public int printStatusInteger() {
 		return this.status.status;
 	}
 	
 	public void atualizaValor() {
-		double atual = 0.0;
-		
-		for(LivroPedido l: livros) {
-			atual += l.getValorTotal();
+		double valor = 0.00;
+		for(Livro l : livros.getLivros()) {
+			valor += l.getPreco();
 		}
-		
-		this.valor = atual;
+		this.valor = valor;
 	}
+	
 	
 }

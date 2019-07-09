@@ -33,6 +33,7 @@ public class Livro {
 		this.editora = editora;
 		this.precoCusto = precoCusto;
 		this.margemLucro = this.preco - this.precoCusto;
+		this.estoque = 10;
 	}
 	
 	
@@ -147,7 +148,7 @@ public class Livro {
 	}
 	
 	public void retirarEstoque(int quant) {
-		this.estoque += quant;
+		this.estoque -= quant;
 	}
 	
 	public void addAutorLivro(Autor a) {
